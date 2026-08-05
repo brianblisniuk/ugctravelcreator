@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bundle Creador · UGC Travel Creator</title><!-- build 2026-08-01b -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+:root{
+  --v:#E43D12;--v2:#c73410;--rose:#D6536D;--blush:#FFA2B6;--grad:linear-gradient(120deg,#E43D12 0%,#D6536D 100%);
+  --dor:#EFB11D;
+  --bg:#FDFCFA; --white:#fff;
+  --ink:#1A1815; --g:#6E6860; --ln:#EBE3E0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 'Karla',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+strong,b{font-weight:700} a{color:var(--v)} p+p{margin-top:12px}
+
+h1{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(34px,7vw,58px);line-height:1.06;letter-spacing:-.03em;color:var(--ink)}
+h1 em{font-style:normal;color:var(--v)}
+h2{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(26px,5vw,40px);line-height:1.14;letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
+h2 em{font-style:normal;color:var(--v)}
+h3{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(18px,3.4vw,22px);line-height:1.3;margin-bottom:10px;letter-spacing:-.01em}
+.eye{font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.micro{font-size:13.5px;color:var(--g);text-align:center;margin-top:11px}
+.center{text-align:center}
+.cap{font-size:12px;color:var(--g);font-style:italic;text-align:center;margin-top:12px}
+
+/* header */
+.top{padding:24px 0;text-align:center;border-bottom:1px solid var(--ln)}
+.top a{font:700 11px 'Syne';letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+
+/* hr */
+.hr{border:none;border-top:1px solid var(--ln);margin:58px 0}
+@media(max-width:680px){.hr{margin:42px 0}}
+
+/* btn */
+.btn{display:block;width:100%;background:var(--grad);color:#fff;text-align:center;padding:19px 24px;border-radius:999px;font:700 16px 'Syne';text-decoration:none;letter-spacing:.01em;box-shadow:0 14px 30px -14px rgba(214,83,109,.5);transition:background .17s,transform .1s}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translateY(1px)}
+
+/* ── IPAD ── */
+.ipad-frame{background:#0D0D0D;border-radius:17px;padding:9px 6px;position:relative;box-shadow:0 0 0 1px #222,0 22px 44px -16px rgba(0,0,0,.55),0 6px 12px -8px rgba(0,0,0,.32);flex:none;display:block}
+.ipad-cam{display:block;position:absolute;top:3.5px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.ipad-scr{border-radius:10px;overflow:hidden;line-height:0;background:#000;height:100%}
+.ipad-scr img{width:100%;display:block;height:100%;object-fit:cover}
+
+/* ── MACBOOK ── */
+.mac-wrap{display:inline-flex;flex-direction:column;align-items:center;flex:none}
+.mac-lid{background:linear-gradient(160deg,#3C3C3C,#2A2A2A);border-radius:9px 9px 0 0;padding:7px 7px 0;position:relative;border:1px solid #444;border-bottom:none;box-shadow:0 0 0 1px #1a1a1a}
+.mac-cam{display:block;position:absolute;top:3px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:#1a1a1a;border:1px solid #444}
+.mac-scr{border-radius:4px;overflow:hidden;background:#111;display:flex;flex-direction:column;width:clamp(190px,32vw,248px);height:clamp(116px,19.5vw,151px)}
+.mac-toolbar{background:#2A2A2A;padding:4px 8px;display:flex;gap:4px;align-items:center;flex:none}
+.mac-toolbar span{width:7px;height:7px;border-radius:50%;display:inline-block}
+.mac-toolbar span:nth-child(1){background:#FF5F57}
+.mac-toolbar span:nth-child(2){background:#FFBD2E}
+.mac-toolbar span:nth-child(3){background:#28C840}
+.mac-content{flex:1;background:#1A1A1A;display:flex;align-items:center;justify-content:center;padding:6px}
+.mac-content img{max-height:100%;max-width:52%;border-radius:2px;box-shadow:0 4px 12px rgba(0,0,0,.6)}
+.mac-base{background:linear-gradient(to bottom,#3C3C3C,#2A2A2A);border-radius:0 0 5px 5px;width:112%;height:10px;margin-top:-1px;position:relative;border:1px solid #444;border-top:none}
+.mac-hinge{display:block;position:absolute;top:0;left:50%;transform:translateX(-50%);width:28%;height:2.5px;background:#222;border-radius:0 0 3px 3px}
+
+/* ── HERO STACK ── */
+.hero{padding:52px 0 0;text-align:center}
+.stack-outer{max-width:720px;margin:0 auto 42px;padding:0 6px}
+.r1{display:flex;justify-content:center;align-items:flex-end;gap:5px}
+.r2{display:flex;justify-content:center;align-items:flex-start;gap:5px;margin-top:-44px;position:relative;z-index:3}
+.rgap{flex:none;width:clamp(14px,2.8vw,22px)}
+.r1 .ipad-frame{width:clamp(68px,13vw,90px);aspect-ratio:3/4.3}
+.r1 .ipad-frame:nth-child(1),
+.r1 .ipad-frame:nth-child(5){margin-bottom:16px}
+.r2 .ipad-frame{width:clamp(74px,14vw,98px);aspect-ratio:3/4.3}
+.r2 .ipad-frame:nth-child(1){transform:translateY(7px)}
+.r2 .ipad-frame:nth-child(4){transform:translateY(9px)}
+
+.hero h1{margin-bottom:14px}
+.hero .sub{font:500 clamp(18px,3.8vw,24px) 'Syne';color:var(--v);margin-bottom:18px;line-height:1.3}
+.hero .lede{font-size:17px;max-width:540px;margin:0 auto 28px;color:var(--ink)}
+.hero .btn{max-width:460px;margin:0 auto}
+
+/* ── ESPEJO ── */
+.beat{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(20px,4.4vw,30px);line-height:1.3;margin-bottom:9px;letter-spacing:-.01em}
+.beat.no{color:var(--v);font-size:clamp(24px,5.2vw,36px);margin:14px 0 22px}
+
+/* ── LOBBY ── */
+.lobby-ph{border-radius:18px;overflow:hidden;line-height:0;margin-bottom:28px}
+.lobby-ph img{width:100%;display:block}
+.cred{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.cred .c{border-top:2.5px solid var(--v);padding-top:10px}
+.cred .cn{font-family:'Syne',sans-serif;font-weight:600;font-size:20px;display:block;line-height:1.2}
+.cred .cl{font:600 11px 'Karla';letter-spacing:.07em;text-transform:uppercase;color:var(--g);display:block;margin-top:5px;line-height:1.5}
+@media(max-width:560px){.cred{grid-template-columns:1fr 1fr}.cred .c:last-child{grid-column:1/-1}}
+
+/* ── EBOOK PREVIEWS ── */
+.ebk-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 8px}
+.ep{background:#fff;border:1px solid var(--ln);border-radius:13px;overflow:hidden;box-shadow:0 8px 22px -16px rgba(26,24,21,.2)}
+.ep .ep-lbl{font:700 9px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--v);padding:13px 16px 8px;display:block}
+.ep img{width:100%;display:block;border-top:1px solid var(--ln)}
+@media(max-width:600px){.ebk-grid{grid-template-columns:1fr}}
+
+/* ── SPREAD ── */
+.spread{background:#fff;border:1px solid var(--ln);border-radius:13px;overflow:hidden;box-shadow:0 8px 22px -16px rgba(26,24,21,.2);margin-top:16px}
+.spread .ep-lbl{font:700 9px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--v);padding:13px 16px 8px;display:block}
+.spread img{width:100%;display:block;border-top:1px solid var(--ln)}
+
+/* ── PLAYBOOKS ── */
+.pb-block{display:grid;grid-template-columns:154px 1fr;gap:24px;align-items:center;margin-top:36px}
+.pb-block .ipad-frame{width:150px;aspect-ratio:3/4.3}
+.pb-k{font:700 10px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--v);margin-bottom:8px}
+.pp{font-size:15.5px;line-height:1.6}
+.pin{font-size:13.5px;color:var(--g);margin-top:10px}
+.pb-price{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pb-orig{font-family:'Syne',sans-serif;font-weight:500;font-size:17px;text-decoration:line-through;color:var(--g)}
+.pb-deal{font:700 12px 'Syne';letter-spacing:.05em;background:var(--dor);color:var(--ink);padding:4px 10px;border-radius:99px;white-space:nowrap}
+.plus-sep{font-family:'Syne',sans-serif;font-weight:300;font-size:44px;color:var(--v);text-align:center;line-height:1;margin:20px 0 -6px;opacity:.55}
+@media(max-width:600px){.pb-block{grid-template-columns:1fr;justify-items:center}.pb-text{text-align:center}.pb-price{justify-content:center}}
+
+/* ── VALUE STACK ── */
+.vsbox{background:#fff;border:1.5px solid var(--ln);border-radius:14px;overflow:hidden;margin:30px 0}
+.vs-head{background:var(--ink);color:#fff;padding:12px 20px;font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase}
+.vs-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 20px;border-bottom:1px solid var(--ln);font-size:14px}
+.vs-row.vs-top{padding-bottom:12px}
+.vs-l{display:flex;gap:10px;align-items:flex-start;flex:1}
+.vschk{color:var(--v);font-weight:700;flex:none;font-size:14px}
+.vsi{display:flex;flex-direction:column;gap:3px}
+.vs-sub{font-size:12px;color:var(--g)}
+.vs-r{text-align:right;flex:none;white-space:nowrap}
+.vs-orig{font-family:'Syne',sans-serif;font-size:15px;text-decoration:line-through;color:var(--g)}
+.vs-total{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 20px;background:#FAF9F7;border-bottom:1.5px solid var(--ln);font-size:15px;font-weight:700}
+.vs-strike{font-family:'Syne',sans-serif;font-size:17px;text-decoration:line-through;color:var(--g)}
+.vs-final{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 20px 10px;background:#FAF9F7}
+.vs-big{font-family:'Syne',sans-serif;font-weight:700;font-size:34px;color:var(--v);line-height:1}
+.vs-saving{text-align:center;font:600 12px 'Syne';letter-spacing:.04em;color:var(--g);background:#FAF9F7;padding:0 20px 13px}
+
+/* ── PRECIO GRANDE ── */
+.big-price{margin:26px 0 20px}
+.big-price .pl{display:block;font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.big-price .pn{display:block;font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(58px,13vw,84px);color:var(--ink);line-height:1;margin-top:6px;letter-spacing:-.03em}
+.recap .btn{max-width:460px;margin:0 auto}
+
+/* ── FIT ── */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fc{background:#fff;border:1px solid var(--ln);border-radius:13px;padding:22px 20px}
+.fc h3{font-size:19px;margin-bottom:12px}
+.fc.si h3{color:var(--v)}
+.fc.no h3{color:var(--g)}
+.fc ul{list-style:none}
+.fc li{padding:7px 0 7px 20px;position:relative;font-size:15px}
+.fc li::before{content:'—';position:absolute;left:0;color:var(--dor)}
+@media(max-width:600px){.fit{grid-template-columns:1fr}}
+
+/* ── FAQ ── */
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 2px;font:600 16px 'Syne';cursor:pointer;list-style:none;-webkit-appearance:none;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq .fm{font-family:'Syne',sans-serif;font-weight:300;font-size:24px;color:var(--v);flex:none;transition:transform .2s;line-height:1}
+.faq details[open] .fm{transform:rotate(45deg)}
+.faq .fa{padding:0 2px 18px;font-size:15.5px}
+
+/* ── CIERRE ── */
+.close{background:var(--ink);margin-top:76px;padding:84px 0 66px;text-align:center}
+.close .c1{font-family:'Syne',sans-serif;font-weight:400;font-size:clamp(18px,3.8vw,24px);line-height:1.5;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto}
+.close .c2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,6.4vw,46px);color:#fff;margin:16px auto 34px;line-height:1.2;letter-spacing:-.02em;max-width:560px}
+.close .c2 em{color:var(--dor);font-style:normal}
+.close .btn{max-width:460px;margin:0 auto;background:var(--grad)}
+.legal{margin-top:40px;font-size:12.5px;color:rgba(255,255,255,.38)}
+.legal a{color:rgba(255,255,255,.55);text-decoration:none;margin:0 8px}
+
+/* ── STICKY MOBILE ── */
+.sticky{position:fixed;bottom:0;left:0;right:0;background:var(--ink);display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));z-index:60;transform:translateY(110%);transition:transform .28s;box-shadow:0 -10px 28px rgba(26,24,21,.36)}
+.sticky.on{transform:none}
+.sticky .sp{font:700 22px 'Syne';color:#fff;flex:none;letter-spacing:-.02em}
+.sticky a{flex:1;background:var(--grad);color:#fff;border-radius:999px;padding:14px 10px;font:700 14px 'Syne';text-align:center;text-decoration:none}
+@media(max-width:780px){.sticky{display:flex}}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+body{position:relative}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.close{position:relative;overflow:hidden}
+.close::before{content:'';position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:900px;height:480px;background:radial-gradient(closest-side,rgba(214,83,109,.22),transparent 70%)}
+.close>*{position:relative}
+::selection{background:#FFA2B6;color:#1A1815}
+
+.nav{position:sticky;top:0;z-index:80;background:rgba(253,252,250,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.nav-in{max-width:1140px;margin:0 auto;padding:15px 28px;display:flex;align-items:center;gap:32px}
+.nav .logo{font:800 15px 'Syne';color:var(--ink);text-decoration:none;flex:none}
+.nav .logo em{font-style:normal;color:var(--v)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font:700 14.5px 'Karla';color:var(--ink);text-decoration:none}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{font:800 13.5px 'Karla';background:var(--grad);color:#fff;padding:11px 22px;border-radius:999px;text-decoration:none;flex:none}
+@media(max-width:800px){.nav-links{display:none}.nav-cta{margin-left:auto}}
+.foot{background:var(--ink);padding:48px 28px 36px}
+.foot-in{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}
+.foot .flogo{font:800 14px 'Syne';color:#fff}
+.foot .flogo em{font-style:normal;color:var(--blush)}
+.foot p{font-size:13.5px;color:rgba(255,255,255,.45);margin-top:12px;line-height:1.6}
+.foot h4{font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.foot ul{list-style:none;margin:0;padding:0}.foot li{margin-bottom:9px}
+.foot li a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px}
+.foot li a:hover{color:var(--blush)}
+.foot-btm{max-width:1140px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(255,255,255,.35)}
+.foot-btm a{color:rgba(255,255,255,.5);text-decoration:none;margin-left:14px}
+@media(max-width:860px){.foot-in{grid-template-columns:1fr 1fr}}
+html,body{overflow-x:clip}
+
+
+/* ── collage fluido: escala proporcional a cualquier ancho ── */
+@media(max-width:640px){
+  .stack-outer{padding:0 4px}
+  .r1{gap:4px}
+  .r1 .ipad-frame{flex:90 1 0;width:auto!important;min-width:0}
+  .rgap{flex:20 0 0;width:auto}
+  .mac-wrap{flex:280 0 0;min-width:0}
+  .mac-lid{width:100%}
+  .mac-scr{width:100%;height:auto;aspect-ratio:270/158}
+  .r2{gap:4px;margin-top:clamp(-44px,-11vw,-22px)}
+  .r2 .ipad-frame{flex:1 1 0;width:auto!important;min-width:0}
+}
+@media(max-width:480px){.nav-in{padding:12px 16px;gap:16px}}
+
+
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:8px 2px;flex:none}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:transform .2s,opacity .2s}
+.nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.open .nav-burger span:nth-child(2){opacity:0}
+.nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-menu{display:none;border-top:1px solid var(--ln);background:rgba(253,252,250,.98);padding:6px 20px 14px}
+.nav-menu a{display:block;padding:13px 2px;font:700 16px 'Karla';color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ln)}
+.nav-menu a:last-child{border-bottom:none}
+.nav.open .nav-menu{display:block}
+@media(max-width:800px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .nav-in{padding:12px 16px;gap:14px}
+  .nav-in .logo{margin-right:auto}
+  .nav-cta{margin-left:0;padding:10px 18px;font-size:13px}
+}
+@media(min-width:801px){.nav-menu{display:none!important}}
+
+/* ── suite de producto (laptop + tablets), CSS a prueba de Safari ── */
+.suite{max-width:760px;margin:52px auto 0;padding:0 8px}
+.s-back{display:flex;align-items:flex-end;gap:2%;padding:0 4%}
+.s-back .s-tab{flex:1 1 0;min-width:0}
+.s-front{display:flex;align-items:flex-end;gap:2.4%;margin-top:-10%;position:relative;z-index:2;padding:0 1%}
+.s-front .s-tab{flex:1 1 0;min-width:0}
+.s-tab{background:#0D0D0D;border-radius:9% / 6%;padding:3.4% 2.8%;position:relative;box-shadow:0 0 0 1px #222,0 16px 32px -12px rgba(26,24,21,.45)}
+.s-front .s-tab{box-shadow:0 0 0 1px #222,0 22px 40px -14px rgba(26,24,21,.55)}
+.s-cam{position:absolute;top:1.6%;left:50%;margin-left:-2px;width:4px;height:4px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.s-scr{overflow:hidden;border-radius:6px;background:#000}
+.s-scr img{display:block;width:100%;height:auto}
+.s-lap{flex:2.35 1 0;min-width:0;position:relative;z-index:1}
+.s-lid{background:#0D0D0D;border-radius:10px 10px 0 0;padding:2.4% 2.4% 0;box-shadow:0 0 0 1px #222,0 24px 44px -14px rgba(26,24,21,.5);position:relative}
+.s-lcam{position:absolute;top:1.2%;left:50%;margin-left:-2px;width:4px;height:4px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.s-lscr{position:relative;height:0;padding-top:63%;background:#111;border-radius:5px 5px 0 0;overflow:hidden}
+.s-lscr img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.s-base{height:0;padding-top:2.6%;background:linear-gradient(#E9E9E9,#B9B9B9);border-radius:0 0 10px 10px;width:107%;margin-left:-3.5%;box-shadow:0 10px 22px -10px rgba(26,24,21,.5);position:relative}
+.s-base::after{content:'';position:absolute;top:0;left:50%;width:12%;margin-left:-6%;height:38%;background:#9F9F9F;border-radius:0 0 6px 6px}
+.nav-in{width:100%;box-sizing:border-box}.nav .logo{white-space:nowrap}</style>
+<meta name="description" content="Bundle Creador: el ebook completo + 8 playbooks de ejecución para conseguir tu primera colaboración paga con un hotel. USD 69, pago único."><link rel="canonical" href="https://ugctravelcreator.com/producto-bundle"><meta property="og:type" content="website"><meta property="og:site_name" content="UGC Travel Creator"><meta property="og:locale" content="es_AR"><meta property="og:title" content="Bundle Creador · UGC Travel Creator"><meta property="og:description" content="Bundle Creador: el ebook completo + 8 playbooks de ejecución para conseguir tu primera colaboración paga con un hotel. USD 69, pago único."><meta property="og:url" content="https://ugctravelcreator.com/producto-bundle"><meta property="og:image" content="https://ugctravelcreator.com/assets/img/producto-bundle-01-d0bbbe59f5.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Bundle Creador · UGC Travel Creator"><meta name="twitter:description" content="Bundle Creador: el ebook completo + 8 playbooks de ejecución para conseguir tu primera colaboración paga con un hotel. USD 69, pago único."><meta name="twitter:image" content="https://ugctravelcreator.com/assets/img/producto-bundle-01-d0bbbe59f5.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23E43D12%27/%3E%3Cstop offset=%271%27 stop-color=%27%23D6536D%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Arial,sans-serif%27 font-size=%2734%27 font-weight=%27800%27 fill=%27white%27 text-anchor=%27middle%27%3EU%3C/text%3E%3C/svg%3E"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Bundle Creador — UGC Travel Creator", "description": "Ebook completo + 8 playbooks de ejecución para conseguir tu primera colaboración paga con un hotel.", "image": "https://ugctravelcreator.com/assets/img/producto-bundle-01-d0bbbe59f5.jpg", "brand": {"@type": "Brand", "name": "UGC Travel Creator"}, "offers": {"@type": "Offer", "price": "69", "priceCurrency": "USD", "url": "https://ugctravelcreator.com/producto-bundle", "availability": "https://schema.org/InStock"}}</script></head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+<a class="logo" href="/">UGC Travel <em>Creator</em></a>
+<div class="nav-links"><a href="/tienda">Tienda</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/mi-historia">Mi historia</a></div>
+<a class="nav-cta" href="/guia-gratis">Guía gratis</a>
+<button class="nav-burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button></div><div class="nav-menu"><a href="/tienda">Tienda</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/mi-historia">Mi historia</a><a href="/contacto">Contacto</a></div></nav>
+<main>
+<div class="wrap">
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="stack-outer">
+    <div class="suite"><div class="s-back"><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-02-51f964fa37.jpg" alt="Playbook Checklist de permisos y derechos" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-04-237f4dfdb4.jpg" alt="Playbook Tarifario: cómo y cuánto cobrar" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-08-14d2b83ef7.jpg" alt="Playbook Plan práctico 30 días" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-05-845c50eeb1.jpg" alt="Playbook Media kit template" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-01-d9c2094152.jpg" alt="Playbook Checklist de generación de contenido" loading="lazy"></div></div></div><div class="s-front"><div class="s-lap"><div class="s-lid"><span class="s-lcam"></span><div class="s-lscr"><img src="/assets/img/home-03-ff16e1c52f.jpg" alt="Ebook Creador UGC de Viajes — guía completa" loading="lazy"></div></div><div class="s-base"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-06-fd0d64a6cb.jpg" alt="Playbook Sistema de contacto con hoteles" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-07-6a74e2738c.jpg" alt="Playbook Sistema de detección de buenos negocios" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-09-2405f1a5f3.jpg" alt="Playbook Pipeline y rutina semanal" loading="lazy"></div></div></div></div><p class="cap">Portadas actuales del Bundle Creador — ebook + 8 playbooks.</p>
+  </div>
+
+  <h1>Conseguí que los hoteles<br><em>te paguen</em> por tu contenido.</h1>
+  <p class="sub">Sin necesitar miles de seguidores.</p>
+  <p class="lede">El sistema completo, escrito desde el otro lado del mostrador: por un ex manager de hotel de lujo que pasó años recibiendo —y descartando— propuestas de creators.</p>
+  <a class="btn" id="ctaHero" href="https://pay.hotmart.com/K106920373F">Quiero el Bundle Creador — USD 69</a>
+  <p class="micro">Acceso inmediato · PDF descargable · Pago seguro con Hotmart</p>
+</section>
+
+<hr class="hr">
+
+<!-- ── ESPEJO ── -->
+<section>
+  <p class="beat">Estás escribiendo a hoteles y nadie responde.</p>
+  <p class="beat">Creés que el problema es tu cantidad de seguidores.</p>
+  <p class="beat no">No lo es.</p>
+  <p>Los hoteles no compran tu audiencia. Compran <strong>contenido para usar en sus propios canales</strong>: su Instagram, su web, sus anuncios. Eso es UGC — vos creás, ellos publican. Por eso tu número de seguidores es irrelevante.</p>
+  <p>Lo que sí importa es <strong>a quién le escribís, qué ofrecés y cómo lo presentás</strong>. Y eso es exactamente lo que la mayoría hace mal.</p>
+</section>
+
+<hr class="hr">
+
+<!-- ── MOSTRADOR ── -->
+<section>
+  <div class="lobby-ph"><img src="/assets/img/home-10-68326df1c1.jpg" alt="Lobby de hotel de lujo en Tailandia"></div>
+  <h2>Este sistema no lo escribió un creator.<br><em>Lo escribió quien los contrataba.</em></h2>
+  <p>Ex manager de hotel de lujo. Fundador de una agencia de viajes y de un servicio de concierge internacional. Más de 70 países recorridos. Años recibiendo propuestas de creators — y viendo por qué la mayoría se descartaba en segundos.</p>
+  <p>Cada plantilla, cada script y cada tarifa está escrita desde ese lugar: <strong>el de la persona que decide si tu propuesta se responde o se archiva.</strong></p>
+  <div class="cred">
+    <div class="c"><span class="cn">Hotel de lujo</span><span class="cl">Ex manager</span></div>
+    <div class="c"><span class="cn">Agencia propia</span><span class="cl">Viajes + concierge internacional</span></div>
+    <div class="c"><span class="cn">+70</span><span class="cl">Países recorridos</span></div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ── OFERTA ── -->
+<section class="center">
+  <p class="eye">El sistema completo</p>
+  <h2>El Bundle Creador:<br><em>de cero a tu primera colaboración.</em></h2>
+  <p style="max-width:520px;margin-inline:auto">Un ebook de 168 páginas con el método completo, más 8 playbooks de ejecución — 56 páginas de plantillas, scripts y ejemplos listos para usar.</p>
+</section>
+
+<hr class="hr">
+
+<!-- ── EBOOK ── -->
+<section>
+  <p class="eye">La pieza central</p>
+  <h2>El ebook <em>Creador UGC de Viajes</em></h2>
+  <p>168 páginas. 10 capítulos. El recorrido completo: modelos de negocio, cómo piensa el hotel, tarifas, portfolio, contacto con marcas, el pitch, contratos, operación y plan de 30 días.</p>
+
+  <div class="ebk-grid">
+    <div class="ep">
+      <span class="ep-lbl">Índice · Parte I</span>
+      <img src="/assets/img/producto-ebook-01-c0378bfa13.jpg" alt="Índice parte I — páginas del PDF real">
+    </div>
+    <div class="ep">
+      <span class="ep-lbl">Índice · Parte II</span>
+      <img src="/assets/img/producto-ebook-02-0df2b24e62.jpg" alt="Índice parte II — páginas del PDF real">
+    </div>
+  </div>
+
+  <div class="spread">
+    <span class="ep-lbl">Doble página interior</span>
+    <img src="/assets/img/producto-bundle-01-d0bbbe59f5.jpg" alt="Doble página interior — paquetes y tarifas">
+  </div>
+
+  <p style="margin-top:16px">Se vende por separado a <strong>USD 39</strong>.</p>
+</section>
+
+<hr class="hr">
+
+<!-- ── PLAYBOOKS ── -->
+<section>
+  <p class="eye">La ejecución</p>
+  <h2>8 playbooks. 8 sistemas de trabajo.</h2>
+  <p>El ebook te da el método. Los playbooks te dan la ejecución: cada uno es un sistema autónomo para una etapa concreta, con plantillas de texto exacto, pasos en orden y ejemplos resueltos.</p>
+
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-01-d9c2094152.jpg" alt="pb01" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 01</p>
+    <h3>Checklist de generación de contenido</h3>
+    <p class="pp">Cómo llegar a cada colaboración sabiendo exactamente qué filmar — sin volver nunca con material insuficiente.</p>
+    <p class="pin"><strong>Adentro:</strong> checklist paso a paso · plan de tomas · control final</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 28</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-02-51f964fa37.jpg" alt="pb02" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 02</p>
+    <h3>Checklist de arribo: permisos y derechos</h3>
+    <p class="pp">Cómo cubrir permisos y derechos de imagen antes de apretar rec, para que ninguna pieza se caiga después.</p>
+    <p class="pin"><strong>Adentro:</strong> qué permisos pedir y cuándo · plantillas · derechos sin letra chica</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 23</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-06-fd0d64a6cb.jpg" alt="pb03" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 03</p>
+    <h3>Sistema de contacto con hoteles y empresas turísticas</h3>
+    <p class="pp">Cómo escribirle a un hotel para que tu propuesta se responda — scripts de texto exacto y expectativas reales.</p>
+    <p class="pin"><strong>Adentro:</strong> scripts de contacto · secuencia de seguimiento · tasas reales</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 84</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-07-6a74e2738c.jpg" alt="pb04" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 04</p>
+    <h3>Sistema de detección de buenos negocios</h3>
+    <p class="pp">Cómo distinguir una colaboración que vale la pena de una que te hace perder el mes.</p>
+    <p class="pin"><strong>Adentro:</strong> criterios de filtro · señales de alerta · ejemplo resuelto</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 38</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-08-14d2b83ef7.jpg" alt="pb05" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 05</p>
+    <h3>Plan práctico: los primeros 30 días</h3>
+    <p class="pp">Cómo pasar de cero a tus primeras propuestas enviadas en 30 días — día por día, sin improvisar.</p>
+    <p class="pin"><strong>Adentro:</strong> plan día por día · objetivos semanales · qué hacer si no hay respuestas</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 53</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-09-2405f1a5f3.jpg" alt="pb06" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 06</p>
+    <h3>Pipeline y rutina semanal de acuerdos de negocios</h3>
+    <p class="pp">Cómo sostener un flujo constante de acuerdos sin depender de la inspiración ni del algoritmo.</p>
+    <p class="pin"><strong>Adentro:</strong> rutina semanal · pipeline de seguimiento · retomar conversaciones frías</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 28</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-04-237f4dfdb4.jpg" alt="pb07" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 07</p>
+    <h3>Tarifario: cómo y cuánto cobrar por tu contenido</h3>
+    <p class="pp">Cómo calcular cuánto cobrar y cómo presentarlo sin regalarte ni ahuyentar al cliente.</p>
+    <p class="pin"><strong>Adentro:</strong> lógica de precios · rangos orientativos · cómo presentar tu tarifa</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 54</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+<div class="plus-sep" aria-hidden="true">+</div>
+<div class="pb-block">
+  <div class="ipad-frame">
+  <span class="ipad-cam"></span>
+  <div class="ipad-scr"><img src="/assets/img/home-05-845c50eeb1.jpg" alt="pb08" loading="lazy"></div>
+</div>
+  <div class="pb-text">
+    <p class="pb-k">Playbook 08</p>
+    <h3>Media Kit Template</h3>
+    <p class="pp">La propuesta profesional que un manager espera ver antes de decir que sí.</p>
+    <p class="pin"><strong>Adentro:</strong> template completo campo a campo · ejemplo resuelto · hoja rellenable</p>
+    <div class="pb-price">
+      <span class="pb-orig">USD 64</span>
+      <span class="pb-deal">USD 3,75 en el bundle</span>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<hr class="hr">
+
+<!-- ── VALUE STACK ── -->
+<section>
+  <p class="eye center">Qué vale este bundle</p>
+  <h2 class="center">Todo lo que incluye</h2>
+  <div class="vsbox">
+    <div class="vs-head">Bundle Creador — detalle de valor</div>
+    <div class="vs-row vs-top">
+  <div class="vs-l"><span class="vschk">✓</span>
+    <div class="vsi"><strong>Ebook <em>Creador UGC de Viajes</em></strong>
+    <span class="vs-sub">Precio de venta por separado: USD 39</span></div>
+  </div>
+  <div class="vs-r"><span class="vs-orig">USD 257</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 01 · Checklist de generación de contenido</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 28</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 02 · Checklist de arribo: permisos y derechos</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 23</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 03 · Sistema de contacto con hoteles y empresas</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 84</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 04 · Sistema de detección de buenos negocios</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 38</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 05 · Plan práctico: los primeros 30 días</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 53</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 06 · Pipeline y rutina semanal de acuerdos de n</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 28</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 07 · Tarifario: cómo y cuánto cobrar por tu con</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 54</span></div>
+</div><div class="vs-row">
+  <div class="vs-l"><span class="vschk">✓</span><span>Playbook 08 · Media Kit Template</span></div>
+  <div class="vs-r"><span class="vs-orig">USD 64</span></div>
+</div><div class="vs-total">
+  <div class="vs-l"><strong>Valor total de lista</strong></div>
+  <div class="vs-r vs-strike"><strong>USD 629</strong></div>
+</div>
+<div class="vs-final">
+  <div class="vs-l"><strong>Bundle Creador — todo incluido</strong></div>
+  <div class="vs-r vs-big">USD 69</div>
+</div>
+<div class="vs-saving">Ahorrás USD 560 · 89 % de descuento</div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ── PRECIO ── -->
+<section class="recap center">
+  <div class="big-price"><span class="pl">Todo el sistema</span><span class="pn">USD 69</span></div>
+  <a class="btn" href="https://pay.hotmart.com/K106920373F">Quiero el Bundle Creador — USD 69</a>
+  <p class="micro">Acceso inmediato tras el pago · Archivos PDF · Garantía de reembolso de Hotmart</p>
+</section>
+
+<hr class="hr">
+
+<!-- ── FIT ── -->
+<section>
+  <div class="fit">
+    <div class="fc si">
+      <h3>Es para vos si</h3>
+      <ul>
+        <li>Querés empezar en UGC de viajes sin audiencia previa.</li>
+        <li>Preferís plantillas y sistemas antes que teoría.</li>
+        <li>Estás dispuesto a mandar propuestas reales.</li>
+      </ul>
+    </div>
+    <div class="fc no">
+      <h3>No es para vos si</h3>
+      <ul>
+        <li>Buscás ingresos garantizados. El sistema te da el método; los resultados dependen de tu ejecución.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Necesito seguidores para empezar? <span class="fm">+</span></summary><p class="fa">No. El hotel usa tu contenido en sus propios canales: no compra tu audiencia, compra piezas. Tu número de seguidores es irrelevante.</p></details>
+  <details><summary>¿Necesito experiencia previa? <span class="fm">+</span></summary><p class="fa">No. El sistema arranca desde cero e incluye cómo armar tu primer portafolio sin colaboraciones previas.</p></details>
+  <details><summary>¿Necesito una cámara profesional? <span class="fm">+</span></summary><p class="fa">No. Todo está pensado para producir con tu celular.</p></details>
+  <details><summary>¿Tengo que mostrar mi cara? <span class="fm">+</span></summary><p class="fa">No necesariamente. Hay formas de crear UGC de viajes sin aparecer en cámara, y el sistema las contempla.</p></details>
+  <details><summary>¿Funciona en mi país? <span class="fm">+</span></summary><p class="fa">Sí. Hay hoteles independientes en toda ciudad de Hispanoamérica y España. El sistema aplica para colaboraciones locales e internacionales.</p></details>
+  <details><summary>¿Cuánto se cobra en este mercado? <span class="fm">+</span></summary><p class="fa">Las tarifas varían aproximadamente entre USD 50 y 500 por colaboración según nivel y alcance. El Playbook 07 te enseña a calcular y presentar la tuya. Ningún resultado está garantizado.</p></details>
+  <details><summary>¿Cómo recibo el material? <span class="fm">+</span></summary><p class="fa">Por Hotmart, con descarga inmediata después del pago. Todos los archivos en PDF.</p></details>
+  <details><summary>¿Hay garantía? <span class="fm">+</span></summary><p class="fa">Sí: la garantía de reembolso de Hotmart vigente al momento de la compra.</p></details>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ── CIERRE ── -->
+<section class="close">
+  <div class="wrap">
+    <p class="c1">Del otro lado del mostrador, una propuesta bien hecha se nota en segundos.</p>
+    <p class="c2">Aprendé a escribir<br><em>una de esas.</em></p>
+    <a class="btn" href="https://pay.hotmart.com/K106920373F">Quiero el Bundle Creador — USD 69</a>
+    <p class="legal"><a href="/privacidad">Privacidad</a>·<a href="/terminos">Términos</a>·<a href="/reembolsos">Reembolsos</a>·<a href="/cookies">Cookies</a></p>
+  </div>
+</section>
+</main>
+<footer class="foot">
+<div class="foot-in">
+<div><span class="flogo">UGC Travel <em>Creator</em></span><p>El método para trabajar con hoteles y marcas de viaje, escrito desde adentro de la hotelería de lujo.</p></div>
+<div><h4>Explorá</h4><ul><li><a href="/tienda">Tienda</a></li><li><a href="/producto-ebook">Ebook</a></li><li><a href="/producto-bundle">Bundle Creador</a></li><li><a href="/guia-gratis">Guía gratis</a></li></ul></div>
+<div><h4>Aprendé</h4><ul><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li><li><a href="/mi-historia">Mi historia</a></li><li><a href="/contacto">Contacto</a></li></ul></div>
+<div><h4>Seguinos</h4><ul><li><a href="https://www.instagram.com/travelcreatorugc/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@travelcreatorugc" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.threads.net/@travelcreatorugc" target="_blank" rel="noopener">Threads</a></li></ul></div>
+</div>
+<div class="foot-btm"><span>© 2026 UGC Travel Creator</span>
+<span><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a><a href="/reembolsos">Reembolsos</a><a href="/cookies">Cookies</a></span></div>
+</footer>
+
+<div class="sticky" id="stickyM">
+  <span class="sp">USD 69</span>
+  <a href="https://pay.hotmart.com/K106920373F">Quiero el Bundle</a>
+</div>
+
+<script>
+(function(){
+  var c=document.getElementById('ctaHero'),s=document.getElementById('stickyM');
+  if(!c||!s||!('IntersectionObserver' in window)){s&&s.classList.add('on');return}
+  new IntersectionObserver(function(e){
+    s.classList.toggle('on',!e[0].isIntersecting&&e[0].boundingClientRect.top<0);
+  },{threshold:0}).observe(c);
+})();
+</script>
+
+<script>
+(function(){
+  var mob=screen.width<=600||/Android|iPhone|iPad|iPod|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+  if(mob)return; /* en mobile: navegación normal al checkout de Hotmart */
+  document.querySelectorAll('a[href^="https://pay.hotmart.com/"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var ov=document.createElement('div');
+      ov.style.cssText='position:fixed;inset:0;background:rgba(26,24,21,.72);z-index:9998;display:flex;align-items:center;justify-content:center;padding:24px';
+      var box=document.createElement('div');
+      box.style.cssText='position:relative;width:min(640px,96vw);height:min(780px,92vh);background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.5)';
+      var x=document.createElement('button');x.innerHTML='&times;';x.setAttribute('aria-label','Cerrar');
+      x.style.cssText='position:absolute;top:6px;right:10px;z-index:2;background:none;border:none;font-size:30px;line-height:1;color:#6E6860;cursor:pointer';
+      var fr=document.createElement('iframe');
+      fr.src=a.href+(a.href.indexOf('?')>0?'&':'?')+'checkoutMode=2';
+      fr.allow='payment';fr.setAttribute('allowpaymentrequest','true');
+      fr.style.cssText='width:100%;height:100%;border:none';
+      function close(){if(ov.parentNode)document.body.removeChild(ov);document.documentElement.style.overflow=''}
+      x.onclick=close;
+      ov.addEventListener('click',function(ev){if(ev.target===ov)close()});
+      document.addEventListener('keydown',function esc(ev){if(ev.key==='Escape'){close();document.removeEventListener('keydown',esc)}});
+      box.appendChild(x);box.appendChild(fr);ov.appendChild(box);document.body.appendChild(ov);
+      document.documentElement.style.overflow='hidden';
+    });
+  });
+})();
+</script><script>document.querySelectorAll(".nav-burger").forEach(function(b){b.addEventListener("click",function(){var n=b.closest(".nav");var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)})});</script></body>
+</html>

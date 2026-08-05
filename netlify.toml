@@ -1,0 +1,172 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# --- API de suscripción (Brevo doble opt-in) ---
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200
+
+# --- Nombre canónico del lead magnet ---
+[[redirects]]
+  from = "/recurso-gratuito"
+  to = "/guia-gratis"
+  status = 301
+  force = true
+
+# --- Acceso directo al PDF (enlaces viejos a la carpeta) ---
+[[redirects]]
+  from = "/descargas/guia-ugc-7k2m9x/"
+  to = "/descargas/guia-ugc-7k2m9x/tu-primera-colaboracion-ugc-travel.pdf"
+  status = 301
+
+# --- Artículos viejos hacia sus reemplazos del clúster ---
+[[redirects]]
+  from = "/blog-como-empezar"
+  to = "/que-es-creador-ugc-de-viajes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-tarifas-ugc"
+  to = "/cuanto-cobrar-ugc-viajes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-viajes-pagados"
+  to = "/canje-o-pago-creadores"
+  status = 301
+  force = true
+
+# --- URLs viejas .html hacia las canónicas sin extensión ---
+[[redirects]]
+  from = "/blog-como-empezar.html"
+  to = "/que-es-creador-ugc-de-viajes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-tarifas-ugc.html"
+  to = "/cuanto-cobrar-ugc-viajes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-viajes-pagados.html"
+  to = "/canje-o-pago-creadores"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tienda.html"
+  to = "/tienda"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/faq.html"
+  to = "/faq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mi-historia.html"
+  to = "/mi-historia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contacto.html"
+  to = "/contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gracias.html"
+  to = "/gracias"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/confirmado.html"
+  to = "/confirmado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/producto-ebook.html"
+  to = "/producto-ebook"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/producto-bundle.html"
+  to = "/producto-bundle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guia-gratis.html"
+  to = "/guia-gratis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacidad.html"
+  to = "/privacidad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terminos.html"
+  to = "/terminos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reembolsos.html"
+  to = "/reembolsos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cookies.html"
+  to = "/cookies"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+
+# --- Headers ---
+[[headers]]
+  for = "/descargas/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/confirmado"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/gracias"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

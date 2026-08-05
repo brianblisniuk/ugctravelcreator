@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480">
+  <rect width="360" height="480" rx="14" fill="#17211E"/>
+  <rect x="16" y="16" width="328" height="448" rx="8" fill="none" stroke="#F7F3EC" stroke-opacity="0.45"/>
+  <circle cx="180" cy="150" r="58" fill="#7E9A8C"/>
+  <path d="M122 208 h116" stroke="#F7F3EC" stroke-width="2" opacity="0.6"/>
+  <text x="180" y="66" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" letter-spacing="4" fill="#F7F3EC" opacity="0.85">BUNDLE PRO</text>
+  <text x="180" y="268" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#F7F3EC">Listas de hoteles</text>
+  <text x="180" y="304" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#F7F3EC">verificadas</text>
+  <text x="180" y="370" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" letter-spacing="2" fill="#F7F3EC" opacity="0.8">TODO EL BUNDLE + LISTAS</text>
+  <text x="180" y="432" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="3" fill="#F7F3EC" opacity="0.6">UGCTRAVELCREATOR.COM</text>
+</svg>

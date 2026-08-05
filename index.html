@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UGC Travel Creator — Conseguí que los hoteles te paguen por tu contenido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+:root{
+  --v:#E43D12;--rose:#D6536D;--blush:#FFA2B6;--dor:#EFB11D;
+  --bg:#FDFCFA;--tint:#FFF3F1;--wh:#fff;--ink:#1A1815;--g:#6E6860;--ln:#EBE3E0;
+  --grad:linear-gradient(120deg,#E43D12 0%,#D6536D 100%);
+  --grad-sunset:linear-gradient(120deg,#E43D12 0%,#D6536D 55%,#e77a92 100%);
+  --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 'Karla',sans-serif;-webkit-font-smoothing:antialiased;position:relative}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+b,strong{font-weight:700} a{color:var(--v)} p+p{margin-top:12px}
+h1{font-family:'Syne';font-weight:800;letter-spacing:-.02em;line-height:1.04}
+h2{font-family:'Syne';font-weight:700;font-size:clamp(25px,4.4vw,40px);line-height:1.14;letter-spacing:-.015em;margin-bottom:16px}
+h3{font-family:'Syne';font-weight:700;font-size:clamp(16px,2.7vw,19px);letter-spacing:-.005em;line-height:1.32}
+.gtx{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eye{display:block;font:700 12px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+.center{text-align:center}
+.sec{padding:88px 0}
+@media(max-width:800px){.sec{padding:56px 0}}
+
+/* buttons */
+.btn{display:inline-block;background:var(--grad);color:#fff;text-align:center;padding:17px 34px;border-radius:999px;font:800 15.5px 'Karla';text-decoration:none;letter-spacing:.01em;box-shadow:0 14px 30px -12px rgba(214,83,109,.5);transition:filter .17s,transform .1s}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translateY(1px)}
+.btn.out{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
+.btn.out:hover{background:var(--ink);color:#fff}
+.btn.full{display:block;width:100%}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:80;background:rgba(253,252,250,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.nav-in{max-width:1140px;margin:0 auto;padding:15px 28px;display:flex;align-items:center;gap:32px}
+.logo{font:800 15px 'Syne';letter-spacing:.02em;color:var(--ink);text-decoration:none;flex:none}
+.logo em{font-style:normal;color:var(--v)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font:700 14.5px 'Karla';color:var(--ink);text-decoration:none}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{font:800 13.5px 'Karla';background:var(--grad);color:#fff;padding:11px 22px;border-radius:999px;text-decoration:none;flex:none}
+@media(max-width:800px){.nav-links{display:none}.nav-cta{margin-left:auto}}
+
+/* HERO */
+.hero{padding:78px 0 0;text-align:center;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:620px;background:radial-gradient(closest-side,rgba(255,162,182,.28),transparent 70%);pointer-events:none}
+.hero>*{position:relative}
+.hero h1{font-size:clamp(36px,6.6vw,70px);max-width:940px;margin:0 auto 20px}
+.hero .lede{font-size:clamp(16.5px,2.4vw,19px);max-width:600px;margin:0 auto 30px}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.hero .micro{font-size:13px;color:var(--g)}
+@media(max-width:560px){.hero-ctas{flex-direction:column;padding:0 8px}.hero-ctas .btn{width:100%}}
+
+/* device stack (sin cambios estructurales) */
+.stack{max-width:860px;margin:56px auto 0;padding:0 10px;position:relative}
+.srow1{display:flex;justify-content:center;align-items:flex-end;gap:6px}
+.srow2{display:flex;justify-content:center;align-items:flex-start;gap:6px;margin-top:-46px;position:relative;z-index:3}
+.sgap{flex:none;width:clamp(16px,3vw,26px)}
+.ipad{background:#0D0D0D;border-radius:16px;padding:8px 6px;position:relative;box-shadow:0 0 0 1px #222,0 22px 44px -16px rgba(26,24,21,.45);flex:none;aspect-ratio:3/4.3}
+.icam{display:block;position:absolute;top:3.5px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.iscr{border-radius:9px;overflow:hidden;line-height:0;background:#000;height:100%}
+.iscr img{width:100%;height:100%;object-fit:cover;display:block}
+.srow1 .ipad{width:clamp(72px,12vw,96px)}
+.srow1 .ipad.lift{margin-bottom:18px}
+.srow2 .ipad{width:clamp(78px,13vw,104px)}
+.srow2 .ipad:nth-child(1){transform:translateY(8px)}
+.srow2 .ipad:nth-child(4){transform:translateY(10px)}
+.mac{display:inline-flex;flex-direction:column;align-items:center;flex:none}
+.mac-lid{background:linear-gradient(160deg,#3C3C3C,#2A2A2A);border-radius:9px 9px 0 0;padding:7px 7px 0;position:relative;border:1px solid #444;border-bottom:none;box-shadow:0 0 0 1px #1a1a1a}
+.mac-cam{display:block;position:absolute;top:3px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#1a1a1a;border:1px solid #444}
+.mac-scr{border-radius:4px;overflow:hidden;background:#111;display:flex;flex-direction:column;width:clamp(210px,30vw,270px);height:clamp(128px,18.5vw,165px)}
+.mac-tb{background:#2A2A2A;padding:4px 8px;display:flex;gap:4px;flex:none}
+.mac-tb span{width:7px;height:7px;border-radius:50%}
+.mac-tb span:nth-child(1){background:#FF5F57}
+.mac-tb span:nth-child(2){background:#FFBD2E}
+.mac-tb span:nth-child(3){background:#28C840}
+.mac-ct{flex:1;background:#1A1A1A;display:flex;align-items:center;justify-content:center;padding:6px}
+.mac-ct img{max-height:100%;max-width:50%;border-radius:2px;box-shadow:0 4px 12px rgba(0,0,0,.6)}
+.mac-base{background:linear-gradient(to bottom,#3C3C3C,#2A2A2A);border-radius:0 0 5px 5px;width:112%;height:10px;margin-top:-1px;position:relative;border:1px solid #444;border-top:none}
+.mac-hg{display:block;position:absolute;top:0;left:50%;transform:translateX(-50%);width:28%;height:2.5px;background:#222;border-radius:0 0 3px 3px}
+.stack-cap{font-size:12.5px;color:var(--g);font-style:italic;text-align:center;margin-top:16px}
+
+/* TRUST BAR */
+.trust{border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);background:var(--wh);margin-top:64px}
+.trust-in{max-width:1140px;margin:0 auto;padding:22px 28px;display:flex;justify-content:center;gap:clamp(24px,6vw,80px);flex-wrap:wrap}
+.tr{display:flex;align-items:center;gap:12px}
+.tr .tn{font:700 19px 'Syne';letter-spacing:-.01em}
+.tr .tl{font:700 11px 'Karla';letter-spacing:.06em;text-transform:uppercase;color:var(--g);line-height:1.5}
+
+/* INSIGHT — banda atardecer */
+.insight{background:var(--grad-sunset);padding:96px 28px;text-align:center;position:relative;overflow:hidden}
+.insight::before{content:'';position:absolute;bottom:-40%;left:50%;transform:translateX(-50%);width:1100px;height:500px;background:radial-gradient(closest-side,rgba(255,220,180,.25),transparent 70%)}
+.insight p{position:relative;font-family:'Syne';font-weight:800;font-size:clamp(25px,5.2vw,50px);line-height:1.18;letter-spacing:-.015em;color:#fff;max-width:900px;margin:0 auto}
+.insight p+p{margin-top:10px}
+.insight .l3{color:rgba(255,255,255,.75);font-size:clamp(17px,2.9vw,26px);font-weight:600;margin-top:22px}
+@media(max-width:800px){.insight{padding:64px 22px}}
+
+/* PRODUCTOS */
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.pc{background:var(--wh);border:1px solid var(--ln);border-radius:var(--r);padding:28px 24px;display:flex;flex-direction:column;position:relative;box-shadow:0 10px 30px -22px rgba(214,83,109,.35)}
+.pc.dark{background:var(--ink);border-color:var(--ink)}
+.pc .pcl{display:block;font:700 11.5px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.pc.dark .pcl{color:var(--blush)}
+.pc .badge{position:absolute;top:-12px;right:20px;background:var(--dor);color:var(--ink);font:800 11px 'Karla';letter-spacing:.05em;text-transform:uppercase;padding:6px 13px;border-radius:99px}
+.pc h3{font-size:21px;margin-bottom:6px}
+.pc.dark h3{color:#fff}
+.pc .pd{font-size:14.5px;color:var(--g);line-height:1.55;margin-bottom:16px}
+.pc.dark .pd{color:rgba(255,255,255,.6)}
+.pc .meta{font:700 11.5px 'Karla';letter-spacing:.05em;text-transform:uppercase;color:var(--g);margin-bottom:18px;line-height:1.9}
+.pc.dark .meta{color:rgba(255,255,255,.45)}
+.pc .price{margin-top:auto;margin-bottom:16px;display:flex;align-items:baseline;gap:10px}
+.pc .po{font-family:'Syne';font-size:15px;text-decoration:line-through;color:var(--g)}
+.pc.dark .po{color:rgba(255,255,255,.4)}
+.pc .pn{font-family:'Syne';font-weight:800;font-size:36px;letter-spacing:-.02em}
+.pc.dark .pn{color:#fff}
+.pro-teaser{text-align:center;margin-top:22px;font:700 12px 'Karla';letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+.pro-teaser span{opacity:.6;font-weight:400;text-transform:none;letter-spacing:0}
+@media(max-width:860px){.prods{grid-template-columns:1fr;max-width:440px;margin-inline:auto}}
+
+/* AUTORIDAD */
+.auth{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.auth-ph{border-radius:var(--r);overflow:hidden;line-height:0;box-shadow:0 24px 48px -18px rgba(26,24,21,.3)}
+.auth-ph img{width:100%;display:block}
+.plates{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+.plate{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#f3c14b,#EFB11D 40%,#d59c12);border-radius:9px;padding:12px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(0,0,0,.15),0 6px 14px -8px rgba(26,24,21,.28);width:fit-content}
+.plate span{font:800 11.5px 'Karla';letter-spacing:.08em;text-transform:uppercase;color:#4a3708;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+@media(max-width:860px){.auth{grid-template-columns:1fr;gap:32px}}
+
+/* OUTCOMES */
+.outs{display:grid;gap:16px;margin-top:40px}
+.oc{background:var(--wh);border:1px solid var(--ln);border-radius:var(--r);padding:26px 22px;box-shadow:0 10px 30px -24px rgba(214,83,109,.3)}
+.oc .on{font-family:'Syne';font-weight:800;font-size:32px;line-height:1;display:block;margin-bottom:12px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.oc h3{font-size:16.5px;margin-bottom:6px}
+.oc p{font-size:14px;color:var(--g);line-height:1.55}
+@media(min-width:861px){.outs{grid-template-columns:repeat(6,1fr)}.outs .oc{grid-column:span 2}.outs .oc:nth-child(4){grid-column:2/4}.outs .oc:nth-child(5){grid-column:4/6}}
+@media(max-width:860px){.outs{grid-template-columns:1fr 1fr}.outs .oc:last-child{grid-column:1/-1}}
+@media(max-width:520px){.outs{grid-template-columns:1fr}}
+
+/* 3 PASOS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;position:relative}
+.step{text-align:center;padding:0 12px}
+.step .sn{width:58px;height:58px;border-radius:50%;background:var(--grad);color:#fff;font:800 21px 'Syne';display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 12px 24px -10px rgba(214,83,109,.5)}
+.step h3{margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--g)}
+.steps::before{content:'';position:absolute;top:29px;left:20%;right:20%;border-top:2px dashed var(--ln);z-index:-1}
+@media(max-width:800px){.steps{grid-template-columns:1fr;gap:34px}.steps::before{display:none}}
+
+/* BLOG */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.post{background:var(--wh);border:1px solid var(--ln);border-radius:var(--r);padding:26px 24px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;box-shadow:0 10px 30px -24px rgba(214,83,109,.3)}
+.post:hover{transform:translateY(-3px);box-shadow:0 18px 38px -20px rgba(214,83,109,.4)}
+.post .pdate{font:700 11px 'Karla';letter-spacing:.08em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.post h3{font-size:18px;margin-bottom:10px;line-height:1.32}
+.post p{font-size:14px;color:var(--g);line-height:1.55;margin-bottom:18px}
+.post .plink{margin-top:auto;font:800 14px 'Karla';color:var(--v)}
+@media(max-width:860px){.posts{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+
+/* CHECK-IN */
+.checkin{background:var(--wh);border:1.5px solid var(--ln);border-radius:22px;padding:44px 40px;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;box-shadow:0 30px 60px -30px rgba(214,83,109,.35);position:relative;overflow:hidden}
+.checkin::before{content:'';position:absolute;top:-120px;right:-120px;width:320px;height:320px;background:radial-gradient(closest-side,rgba(255,162,182,.35),transparent 70%)}
+.checkin>*{position:relative}
+.ck-form{display:flex;flex-direction:column;gap:12px}
+.ck-form label{font:800 11.5px 'Karla';letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+.ck-form input{border:1.5px solid var(--ln);border-radius:12px;padding:15px 16px;font:400 16px 'Karla';background:#FFFDFC;width:100%}
+.ck-form input:focus{outline:2px solid var(--rose);outline-offset:1px;border-color:var(--rose)}
+.ck-micro{font-size:12.5px;color:var(--g)}
+@media(max-width:860px){.checkin{grid-template-columns:1fr;padding:34px 26px;gap:28px}}
+
+/* CIERRE */
+.close{background:var(--ink);padding:96px 28px 72px;text-align:center;position:relative;overflow:hidden}
+.close::before{content:'';position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:900px;height:480px;background:radial-gradient(closest-side,rgba(214,83,109,.22),transparent 70%)}
+.close>*{position:relative}
+.close .c1{font-family:'Syne';font-weight:600;font-size:clamp(15px,3vw,19px);line-height:1.5;color:rgba(255,255,255,.55);max-width:460px;margin:0 auto}
+.close h2{color:#fff;font-size:clamp(27px,5.4vw,44px);margin:14px auto 34px;max-width:640px}
+.close h2 em{font-style:normal;background:linear-gradient(120deg,#FFA2B6,#EFB11D);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* FOOTER */
+.foot{background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:48px 28px 36px}
+.foot-in{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}
+.foot .flogo{font:800 14px 'Syne';color:#fff}
+.foot .flogo em{font-style:normal;color:var(--blush)}
+.foot p{font-size:13.5px;color:rgba(255,255,255,.45);margin-top:12px;line-height:1.6}
+.foot h4{font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.foot ul{list-style:none}
+.foot li{margin-bottom:9px}
+.foot li a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px}
+.foot li a:hover{color:var(--blush)}
+.foot-btm{max-width:1140px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(255,255,255,.35)}
+.foot-btm a{color:rgba(255,255,255,.5);text-decoration:none;margin-left:14px}
+@media(max-width:860px){.foot-in{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+html,body{overflow-x:clip}
+/* ── collage fluido: escala proporcional a cualquier ancho ── */
+@media(max-width:640px){
+  .stack{padding:0 4px}
+  .srow1{gap:4px}
+  .srow1 .ipad{flex:96 1 0;width:auto;min-width:0}
+  .sgap{flex:22 0 0;width:auto}
+  .mac{flex:288 0 0;min-width:0}
+  .mac-lid{width:100%}
+  .mac-scr{width:100%;height:auto;aspect-ratio:270/158}
+  .srow2{gap:4px;margin-top:clamp(-46px,-11vw,-24px)}
+  .srow2 .ipad{flex:1 1 0;width:auto;min-width:0}
+}
+@media(max-width:480px){.nav-in{padding:12px 16px;gap:16px}}
+
+
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:8px 2px;flex:none}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:transform .2s,opacity .2s}
+.nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.open .nav-burger span:nth-child(2){opacity:0}
+.nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-menu{display:none;border-top:1px solid var(--ln);background:rgba(253,252,250,.98);padding:6px 20px 14px}
+.nav-menu a{display:block;padding:13px 2px;font:700 16px 'Karla';color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ln)}
+.nav-menu a:last-child{border-bottom:none}
+.nav.open .nav-menu{display:block}
+@media(max-width:800px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .nav-in{padding:12px 16px;gap:14px}
+  .nav-in .logo{margin-right:auto}
+  .nav-cta{margin-left:0;padding:10px 18px;font-size:13px}
+}
+@media(min-width:801px){.nav-menu{display:none!important}}
+
+/* ── suite de producto (laptop + tablets), CSS a prueba de Safari ── */
+.suite{max-width:760px;margin:52px auto 0;padding:0 8px}
+.s-back{display:flex;align-items:flex-end;gap:2%;padding:0 4%}
+.s-back .s-tab{flex:1 1 0;min-width:0}
+.s-front{display:flex;align-items:flex-end;gap:2.4%;margin-top:-10%;position:relative;z-index:2;padding:0 1%}
+.s-front .s-tab{flex:1 1 0;min-width:0}
+.s-tab{background:#0D0D0D;border-radius:9% / 6%;padding:3.4% 2.8%;position:relative;box-shadow:0 0 0 1px #222,0 16px 32px -12px rgba(26,24,21,.45)}
+.s-front .s-tab{box-shadow:0 0 0 1px #222,0 22px 40px -14px rgba(26,24,21,.55)}
+.s-cam{position:absolute;top:1.6%;left:50%;margin-left:-2px;width:4px;height:4px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.s-scr{overflow:hidden;border-radius:6px;background:#000}
+.s-scr img{display:block;width:100%;height:auto}
+.s-lap{flex:2.35 1 0;min-width:0;position:relative;z-index:1}
+.s-lid{background:#0D0D0D;border-radius:10px 10px 0 0;padding:2.4% 2.4% 0;box-shadow:0 0 0 1px #222,0 24px 44px -14px rgba(26,24,21,.5);position:relative}
+.s-lcam{position:absolute;top:1.2%;left:50%;margin-left:-2px;width:4px;height:4px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.s-lscr{position:relative;height:0;padding-top:63%;background:#111;border-radius:5px 5px 0 0;overflow:hidden}
+.s-lscr img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.s-base{height:0;padding-top:2.6%;background:linear-gradient(#E9E9E9,#B9B9B9);border-radius:0 0 10px 10px;width:107%;margin-left:-3.5%;box-shadow:0 10px 22px -10px rgba(26,24,21,.5);position:relative}
+.s-base::after{content:'';position:absolute;top:0;left:50%;width:12%;margin-left:-6%;height:38%;background:#9F9F9F;border-radius:0 0 6px 6px}
+.nav-in{width:100%;box-sizing:border-box}.nav .logo{white-space:nowrap}</style>
+<meta name="description" content="Conseguí que los hoteles te paguen por tu contenido. El método UGC de viajes explicado por un ex manager de hotel de lujo: sin humo y sin necesitar seguidores."><link rel="canonical" href="https://ugctravelcreator.com/"><meta property="og:type" content="website"><meta property="og:site_name" content="UGC Travel Creator"><meta property="og:locale" content="es_AR"><meta property="og:title" content="UGC Travel Creator — Conseguí que los hoteles te paguen por tu contenido"><meta property="og:description" content="Conseguí que los hoteles te paguen por tu contenido. El método UGC de viajes explicado por un ex manager de hotel de lujo: sin humo y sin necesitar seguidores."><meta property="og:url" content="https://ugctravelcreator.com/"><meta property="og:image" content="https://ugctravelcreator.com/assets/img/home-01-d9c2094152.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="UGC Travel Creator — Conseguí que los hoteles te paguen por tu contenido"><meta name="twitter:description" content="Conseguí que los hoteles te paguen por tu contenido. El método UGC de viajes explicado por un ex manager de hotel de lujo: sin humo y sin necesitar seguidores."><meta name="twitter:image" content="https://ugctravelcreator.com/assets/img/home-01-d9c2094152.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23E43D12%27/%3E%3Cstop offset=%271%27 stop-color=%27%23D6536D%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Arial,sans-serif%27 font-size=%2734%27 font-weight=%27800%27 fill=%27white%27 text-anchor=%27middle%27%3EU%3C/text%3E%3C/svg%3E"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "UGC Travel Creator", "url": "https://ugctravelcreator.com/", "inLanguage": "es"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "UGC Travel Creator", "url": "https://ugctravelcreator.com/", "email": "hello@ugctravelcreator.com", "sameAs": ["https://www.instagram.com/travelcreatorugc/", "https://www.tiktok.com/@travelcreatorugc", "https://www.threads.net/@travelcreatorugc"]}</script></head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="logo" href="/">UGC Travel <em>Creator</em></a>
+    <div class="nav-links">
+      <a href="/tienda">Tienda</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/mi-historia">Mi historia</a>
+    </div>
+    <a class="nav-cta" href="/guia-gratis">Guía gratis</a>
+  <button class="nav-burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button></div><div class="nav-menu"><a href="/tienda">Tienda</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/mi-historia">Mi historia</a><a href="/contacto">Contacto</a></div>
+</nav>
+
+<main>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eye">Desde adentro de la hotelería de lujo</span>
+    <h1>Conseguí que los hoteles<br><span class="gtx">te paguen</span> por tu contenido.</h1>
+    <p class="lede">Hay creators que se hospedan en hoteles increíbles — y cobran por eso. No tienen más seguidores que vos: tienen método. Acá aprendés exactamente cómo funciona ese negocio, desde cero.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="/guia-gratis">Descargar la guía gratis</a>
+      <a class="btn out" href="#productos">Ver el método</a>
+    </div>
+    <p class="micro">Guía de 15 páginas · Sin costo · Directo a tu correo</p>
+  </div>
+
+  <div class="stack">
+    <div class="suite"><div class="s-back"><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-02-51f964fa37.jpg" alt="Playbook Checklist de permisos y derechos" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-04-237f4dfdb4.jpg" alt="Playbook Tarifario: cómo y cuánto cobrar" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-08-14d2b83ef7.jpg" alt="Playbook Plan práctico 30 días" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-05-845c50eeb1.jpg" alt="Playbook Media kit template" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-01-d9c2094152.jpg" alt="Playbook Checklist de generación de contenido" loading="lazy"></div></div></div><div class="s-front"><div class="s-lap"><div class="s-lid"><span class="s-lcam"></span><div class="s-lscr"><img src="/assets/img/home-03-ff16e1c52f.jpg" alt="Ebook Creador UGC de Viajes — guía completa" loading="lazy"></div></div><div class="s-base"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-06-fd0d64a6cb.jpg" alt="Playbook Sistema de contacto con hoteles" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-07-6a74e2738c.jpg" alt="Playbook Sistema de detección de buenos negocios" loading="lazy"></div></div><div class="s-tab"><span class="s-cam"></span><div class="s-scr"><img src="/assets/img/home-09-2405f1a5f3.jpg" alt="Playbook Pipeline y rutina semanal" loading="lazy"></div></div></div></div><p class="stack-cap">El sistema completo: ebook de 168 páginas + 8 playbooks de ejecución.</p>
+  </div>
+
+  <div class="trust">
+    <div class="trust-in">
+      <div class="tr"><span class="tn">Hotel de lujo</span><span class="tl">Ex manager</span></div>
+      <div class="tr"><span class="tn">Agencia propia</span><span class="tl">Viajes + concierge<br>internacional</span></div>
+      <div class="tr"><span class="tn">+70</span><span class="tl">Países<br>recorridos</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="insight">
+  <p>Los hoteles no compran seguidores.</p>
+  <p>Compran contenido.</p>
+  <p class="l3">Y pagan todos los días a quienes saben producirlo.</p>
+</section>
+
+<section class="sec" id="productos">
+  <div class="wrap">
+    <div class="center">
+      <span class="eye">La tienda</span>
+      <h2>Tres formas de empezar.<br>Elegí la tuya.</h2>
+    </div>
+    <div class="prods">
+      <div class="pc">
+        <span class="pcl">Gratis</span>
+        <h3>Tu primera colaboración</h3>
+        <p class="pd">La hoja de ruta de 15 páginas para conseguir tu primera colaboración con un hotel.</p>
+        <p class="meta">15 páginas · PDF · Por email</p>
+        <div class="price"><span class="pn">USD 0</span></div>
+        <a class="btn out full" href="/guia-gratis">Descargar gratis</a>
+      </div>
+      <div class="pc">
+        <span class="pcl">El método</span>
+        <h3>Ebook Creador UGC de Viajes</h3>
+        <p class="pd">Las 168 páginas del método completo: modelo, portfolio, tarifas, pitch, contratos y operación.</p>
+        <p class="meta">168 páginas · 10 capítulos · +40 herramientas</p>
+        <div class="price"><span class="po">USD 257</span><span class="pn">USD 39</span></div>
+        <a class="btn full" href="/producto-ebook">Ver el ebook</a>
+      </div>
+      <div class="pc dark">
+        <span class="badge">El más elegido</span>
+        <span class="pcl">Todo incluido</span>
+        <h3>Bundle Creador</h3>
+        <p class="pd">El ebook + 8 playbooks de ejecución: plantillas, scripts y sistemas listos para usar.</p>
+        <p class="meta">224 páginas · 9 PDFs · Método + ejecución</p>
+        <div class="price"><span class="po">USD 629</span><span class="pn">USD 69</span></div>
+        <a class="btn full" href="/producto-bundle">Ver el bundle</a>
+      </div>
+    </div>
+    <p class="pro-teaser">Bundle Pro <span>· con listas de hoteles por destino · Próximamente</span></p>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--tint);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)">
+  <div class="wrap">
+    <div class="auth">
+      <div class="auth-ph"><img src="/assets/img/home-10-68326df1c1.jpg" alt="Lobby de hotel de lujo"></div>
+      <div>
+        <span class="eye">Quién está detrás</span>
+        <h2>Este método no lo escribió un creator.</h2>
+        <p>Lo escribió alguien que conoce la industria hotelera desde adentro: ex manager de un hotel de lujo, fundador de una agencia de viajes y de un servicio de concierge internacional, con más de 70 países recorridos.</p>
+        <p>Cada plantilla, cada tarifa y cada consejo está escrito desde esa perspectiva: <strong>la de quien sabe cómo piensa un hotel cuando recibe una propuesta.</strong></p>
+        <div class="plates">
+          <div class="plate"><span>Ex manager · Hotel de lujo</span></div>
+          <div class="plate"><span>Agencia de viajes propia</span></div>
+          <div class="plate"><span>+70 países recorridos</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="center">
+      <span class="eye">El método</span>
+      <h2>Cinco cosas que vas a poder hacer.</h2>
+    </div>
+    <div class="outs">
+      <div class="oc"><span class="on">01</span><h3>Entender el modelo</h3><p>Saber cómo funciona este negocio y en qué se diferencia de ser influencer.</p></div>
+      <div class="oc"><span class="on">02</span><h3>Tener con qué mostrar</h3><p>Crear tu primer portfolio aunque nunca hayas trabajado con una marca.</p></div>
+      <div class="oc"><span class="on">03</span><h3>Saber cuánto cobrar</h3><p>Poner precios reales y presentarlos sin incomodidad.</p></div>
+      <div class="oc"><span class="on">04</span><h3>Contactar hoteles que respondan</h3><p>El mensaje correcto, a la persona correcta, en el momento correcto.</p></div>
+      <div class="oc"><span class="on">05</span><h3>Volver a hacerlo</h3><p>Un sistema que vos controlás — no una racha de suerte.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="center">
+      <span class="eye">El camino</span>
+      <h2>De cero a tu primera colaboración<br>en tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="sn">1</span><h3>Armá tu base</h3><p>Portfolio inicial en un fin de semana, sin clientes previos, con spec work legítimo.</p></div>
+      <div class="step"><span class="sn">2</span><h3>Contactá hoteles</h3><p>Con el pitch, las plantillas y la lista de marcas candidatas del método.</p></div>
+      <div class="step"><span class="sn">3</span><h3>Cerrá y repetí</h3><p>Del canje al pago, con todo por escrito y un sistema que sostiene el flujo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--tint);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eye">Del blog</span>
+      <h2>Aprendé antes de comprar.</h2>
+    </div>
+    <div class="posts">
+      <a class="post" href="/que-es-creador-ugc-de-viajes"><span class="pdate">Artículo</span><h3>Qué es un creador UGC de viajes (y por qué no necesitás seguidores)</h3><p>El modelo explicado desde cero: qué compran los hoteles y por qué.</p><span class="plink">Leer el artículo →</span></a>
+      <a class="post" href="/cuanto-cobrar-ugc-viajes"><span class="pdate">Artículo</span><h3>Cuánto cobra un creador UGC de viajes en 2026</h3><p>Rangos reales por nivel y qué hace subir una tarifa.</p><span class="plink">Leer el artículo →</span></a>
+      <a class="post" href="/como-contactar-hotel-colaboracion"><span class="pdate">Artículo</span><h3>Cómo conseguir tu primera colaboración con un hotel</h3><p>El camino completo del primer contacto al primer sí.</p><span class="plink">Leer el artículo →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="checkin">
+      <div>
+        <span class="eye">Empezá gratis</span>
+        <h2 style="font-size:clamp(23px,3.6vw,32px)">Tu primera colaboración con un hotel — la guía de 15 páginas.</h2>
+        <p style="font-size:15.5px;color:var(--g)">Qué ofrecerle a un hotel, cómo escribirle y qué esperar de la primera respuesta. Directo a tu correo, sin costo.</p>
+      </div>
+      <form class="ck-form" action="/api/subscribe" method="post">
+        <label for="ck-email">Tu email</label>
+        <input id="ck-email" type="email" name="email" placeholder="nombre@correo.com" autocomplete="email" inputmode="email" required>
+        <button class="btn full" type="submit">Quiero la guía</button>
+        <p class="ck-micro">Doble confirmación por correo. Sin spam — podés darte de baja cuando quieras.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="close">
+  <p class="c1">Hay personas que hoy están viajando y que los hoteles les pagan por eso. Saben algo que la mayoría no sabe.</p>
+  <h2>Acá aprendés<br><em>exactamente qué es.</em></h2>
+  <a class="btn" href="/guia-gratis">Descargar la guía gratis</a>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <span class="flogo">UGC Travel <em>Creator</em></span>
+      <p>El método para trabajar con hoteles y marcas de viaje, escrito desde adentro de la hotelería de lujo.</p>
+    </div>
+    <div><h4>Explorá</h4><ul><li><a href="/tienda">Tienda</a></li><li><a href="/producto-ebook">Ebook</a></li><li><a href="/producto-bundle">Bundle Creador</a></li><li><a href="/guia-gratis">Guía gratis</a></li></ul></div>
+    <div><h4>Aprendé</h4><ul><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li><li><a href="/mi-historia">Mi historia</a></li><li><a href="/contacto">Contacto</a></li></ul></div>
+    <div><h4>Seguinos</h4><ul><li><a href="https://www.instagram.com/travelcreatorugc/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@travelcreatorugc" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.threads.net/@travelcreatorugc" target="_blank" rel="noopener">Threads</a></li></ul></div>
+  </div>
+  <div class="foot-btm">
+    <span>© 2026 UGC Travel Creator</span>
+    <span><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a><a href="/reembolsos">Reembolsos</a><a href="/cookies">Cookies</a></span>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  document.querySelectorAll('form[action="/api/subscribe"]').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var inp=f.querySelector('input[type="email"]'),btn=f.querySelector('button[type="submit"],button');
+      if(!inp||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(inp.value)){if(inp)inp.focus();return;}
+      var t=btn?btn.textContent:'';if(btn){btn.disabled=true;btn.textContent='Enviando…';}
+      fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:inp.value.trim()})})
+      .then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok&&j.ok};});})
+      .then(function(res){
+        if(res.ok){window.location.href='/gracias';}
+        else{if(btn){btn.disabled=false;btn.textContent=t;}
+          var m=f.querySelector('.ck-err');if(!m){m=document.createElement('p');m.className='ck-err';m.style.cssText='font-size:13px;color:#E43D12;margin-top:6px;font-weight:700';f.appendChild(m);}
+          m.textContent='No pudimos suscribirte. Probá de nuevo en un minuto.';}
+      })
+      .catch(function(){if(btn){btn.disabled=false;btn.textContent=t;}});
+    });
+  });
+})();
+</script>
+<div id="ugc-pop-ov" aria-hidden="true"></div>
+<div id="ugc-pop" role="dialog" aria-modal="true" aria-labelledby="ugc-pop-t">
+  <button id="ugc-pop-x" aria-label="Cerrar">&times;</button>
+  <span class="upop-eye">Guía gratuita · 15 páginas</span>
+  <h3 id="ugc-pop-t">Tu primera colaboración con un hotel</h3>
+  <p>A qué hoteles escribirle, la plantilla exacta de correo y los seguimientos que cierran. Escrita por un ex manager de hotel de lujo.</p>
+  <form action="/api/subscribe" method="post">
+    <input type="email" name="email" placeholder="nombre@correo.com" autocomplete="email" required aria-label="Tu email">
+    <button type="submit">Quiero la guía</button>
+  </form>
+  <p class="upop-micro">Doble confirmación por correo. Sin spam — te das de baja cuando quieras.</p>
+</div>
+<style>
+#ugc-pop-ov{position:fixed;inset:0;background:rgba(26,24,21,.55);z-index:998;opacity:0;pointer-events:none;transition:opacity .25s}
+#ugc-pop{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%);width:min(440px,calc(100vw - 40px));background:#fff;border-radius:22px;padding:34px 30px 26px;z-index:999;box-shadow:0 40px 80px -20px rgba(26,24,21,.45);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+#ugc-pop.on,#ugc-pop-ov.on{opacity:1;pointer-events:auto}
+#ugc-pop.on{transform:translate(-50%,-50%)}
+#ugc-pop-x{position:absolute;top:14px;right:18px;background:none;border:none;font-size:26px;line-height:1;color:#6E6860;cursor:pointer}
+#ugc-pop .upop-eye{display:block;font:700 11px 'Syne',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#D6536D;margin-bottom:10px}
+#ugc-pop h3{font:800 clamp(20px,3vw,24px)/1.2 'Syne',sans-serif;letter-spacing:-.015em;margin-bottom:10px;color:#1A1815}
+#ugc-pop p{font:400 14.5px/1.55 'Karla',sans-serif;color:#6E6860}
+#ugc-pop form{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+#ugc-pop input{border:1.5px solid #EBE3E0;border-radius:12px;padding:14px 15px;font:400 16px 'Karla',sans-serif;background:#FFFDFC;width:100%}
+#ugc-pop input:focus{outline:2px solid #D6536D;outline-offset:1px}
+#ugc-pop button[type=submit]{background:linear-gradient(120deg,#E43D12 0%,#D6536D 100%);color:#fff;border:none;cursor:pointer;padding:14px 24px;border-radius:999px;font:800 15px 'Karla',sans-serif;box-shadow:0 14px 30px -12px rgba(214,83,109,.5)}
+#ugc-pop .upop-micro{font-size:12px;margin-top:10px}
+</style>
+<script>
+(function(){
+  var pop=document.getElementById('ugc-pop'),ov=document.getElementById('ugc-pop-ov');if(!pop)return;
+  var shown=false,K='ugc_popup_last';
+  function get(){try{return parseInt(localStorage.getItem(K)||'0',10)}catch(e){return 0}}
+  function set(){try{localStorage.setItem(K,String(Date.now()))}catch(e){}}
+  function ok(){return (Date.now()-get())>24*3600*1000}
+  function open(){if(shown||!ok())return;shown=true;pop.classList.add('on');ov.classList.add('on');set();}
+  function close(){pop.classList.remove('on');ov.classList.remove('on');}
+  setTimeout(open,9000);
+  window.addEventListener('scroll',function s(){var h=document.documentElement;if(h.scrollTop/(h.scrollHeight-h.clientHeight)>=.45){open();window.removeEventListener('scroll',s);}},{passive:true});
+  document.addEventListener('mouseout',function(e){if(!e.relatedTarget&&e.clientY<=0)open();});
+  ov.addEventListener('click',close);
+  document.getElementById('ugc-pop-x').addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script><script>document.querySelectorAll(".nav-burger").forEach(function(b){b.addEventListener("click",function(){var n=b.closest(".nav");var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)})});</script></body>
+</html>

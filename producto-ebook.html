@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creador UGC de Viajes · Ebook — UGC Travel Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+:root{
+  --v:#E43D12;--v2:#c73410;--rose:#D6536D;--blush:#FFA2B6;--grad:linear-gradient(120deg,#E43D12 0%,#D6536D 100%);--dor:#EFB11D;
+  --bg:#FDFCFA;--wh:#fff;--ink:#1A1815;--g:#6E6860;--ln:#EBE3E0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 'Karla',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+b,strong{font-weight:700} a{color:var(--v)} p+p{margin-top:12px}
+h1{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,6vw,50px);line-height:1.08;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--v)}
+h2{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(22px,4.4vw,36px);line-height:1.16;letter-spacing:-.02em;margin-bottom:16px}
+h2 em{font-style:normal;color:var(--v)}
+h3{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(15px,2.8vw,19px);line-height:1.3;margin-bottom:5px;letter-spacing:-.01em}
+.eye{font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;display:block}
+.micro{font-size:13px;color:var(--g);text-align:center;margin-top:10px}
+.center{text-align:center}
+.top{padding:22px 0;text-align:center;border-bottom:1px solid var(--ln)}
+.top a{font:700 11px 'Syne';letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.hr{border:none;border-top:1px solid var(--ln);margin:52px 0}
+@media(max-width:680px){.hr{margin:38px 0}}
+.btn{display:block;width:100%;background:var(--grad);color:#fff;text-align:center;padding:18px 24px;border-radius:999px;font:700 16px 'Syne';text-decoration:none;letter-spacing:.01em;box-shadow:0 14px 28px -14px rgba(214,83,109,.5);transition:background .17s,transform .1s}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translateY(1px)}
+.btn.out{background:transparent;color:var(--v);border:2px solid var(--v);box-shadow:none}
+.btn.out:hover{background:var(--grad);color:#fff}
+.btn.dk{background:var(--wh);color:var(--ink);box-shadow:none}
+.btn.dk:hover{background:#f0efea}
+
+/* hero */
+.hero{padding:46px 0 0;text-align:center}
+.em-frame{background:#0D0D0D;border-radius:18px;padding:8px 6px;display:inline-block;position:relative;box-shadow:0 0 0 1px #222,0 24px 48px -14px rgba(0,0,0,.58);margin-bottom:28px}
+.em-cam{display:block;position:absolute;top:3.5px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:#1a1a1a;border:1px solid #333}
+.em-scr{border-radius:10px;overflow:hidden;line-height:0;width:clamp(170px,30vw,228px)}
+.em-scr img{width:100%;display:block}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:22px}
+.badge{font:700 11px 'Syne';letter-spacing:.09em;text-transform:uppercase;background:var(--wh);border:1.5px solid var(--ln);padding:6px 13px;border-radius:99px;color:var(--ink)}
+.badge b{color:var(--v)}
+.hero h1{margin-bottom:14px}
+.hero .sub{font:500 clamp(16px,3vw,20px) 'Syne';color:var(--g);margin-bottom:18px;line-height:1.5;max-width:500px;margin-inline:auto}
+.hero .lede{font-size:16.5px;max-width:520px;margin:0 auto 26px;color:var(--ink);line-height:1.68}
+.hero-cta{max-width:400px;margin:0 auto}
+.hero-price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:10px}
+.hp-orig{font-family:'Syne',sans-serif;font-size:17px;text-decoration:line-through;color:var(--g)}
+.hp-now{font-family:'Syne',sans-serif;font-weight:700;font-size:34px;color:var(--ink);letter-spacing:-.02em}
+
+/* espejo */
+.beat{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(18px,3.6vw,26px);line-height:1.32;margin-bottom:6px;letter-spacing:-.01em}
+.beat.yes{color:var(--v);font-size:clamp(20px,4.2vw,30px);margin:10px 0 20px}
+
+/* autoridad */
+.lobby-ph{border-radius:16px;overflow:hidden;line-height:0;margin-bottom:24px}
+.lobby-ph img{width:100%;display:block}
+.cred{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.cred .c{border-top:2.5px solid var(--v);padding-top:10px}
+.cn{font-family:'Syne',sans-serif;font-weight:600;font-size:18px;display:block;line-height:1.2}
+.cl{font:600 11px 'Karla';letter-spacing:.07em;text-transform:uppercase;color:var(--g);display:block;margin-top:4px;line-height:1.5}
+@media(max-width:560px){.cred{grid-template-columns:1fr 1fr}.cred .c:last-child{grid-column:1/-1}}
+
+/* resultados */
+.outcomes{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px;margin-top:20px}
+.oc{background:var(--wh);border:1px solid var(--ln);border-radius:12px;padding:18px;display:flex;gap:14px;align-items:flex-start}
+.oc-n{font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--v);line-height:1;flex:none;width:34px}
+.oc h3{font-size:15.5px;margin-bottom:3px}
+.oc p{font-size:13.5px;color:var(--g);line-height:1.55}
+
+/* tool counts */
+.tcounts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}
+.tc{background:var(--wh);border:1px solid var(--ln);border-radius:12px;padding:18px 14px;text-align:center}
+.tc .tn{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(26px,5vw,36px);color:var(--v);line-height:1;display:block}
+.tc .tl{font:600 11px 'Syne';letter-spacing:.08em;text-transform:uppercase;color:var(--g);display:block;margin-top:5px;line-height:1.5}
+@media(max-width:560px){.tcounts{grid-template-columns:1fr 1fr}.tc:last-child{grid-column:1/-1}}
+
+/* índice */
+.idx-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.idx-c{background:var(--wh);border:1px solid var(--ln);border-radius:12px;overflow:hidden;box-shadow:0 4px 14px -10px rgba(26,24,21,.2)}
+.idx-lbl{font:700 9px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:var(--v);padding:11px 14px 7px;display:block}
+.idx-c img{width:100%;display:block;border-top:1px solid var(--ln)}
+@media(max-width:580px){.idx-grid{grid-template-columns:1fr}}
+
+/* chapter cards */
+.cap-card{padding:58px 0}
+@media(max-width:680px){.cap-card{padding:40px 0}}
+.cap-body{max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.cap-body.cap-reverse{direction:rtl}
+.cap-body.cap-reverse>*{direction:ltr}
+@media(max-width:800px){.cap-body{grid-template-columns:1fr;gap:28px}.cap-body.cap-reverse{direction:ltr}}
+.cap-num{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(52px,9vw,76px);line-height:1;letter-spacing:-.04em;margin-bottom:2px}
+.cap-tag{font:700 11px 'Syne';letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.cap-h{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(20px,4vw,30px);line-height:1.18;letter-spacing:-.02em;margin-bottom:14px}
+.cap-intro{font-size:15px;line-height:1.67;margin-bottom:18px}
+.cap-los{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.cap-lo{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.6}
+.lo-chk{font-weight:700;font-size:14px;flex:none;margin-top:2px}
+.cap-key{border:1px solid;border-radius:10px;padding:13px 15px;margin-bottom:16px}
+.cap-key-lbl{font:700 10px 'Syne';letter-spacing:.11em;text-transform:uppercase;display:block;margin-bottom:5px}
+.cap-key p{font-size:14px;line-height:1.62}
+.cap-inc{font-size:13px;line-height:1.58}
+.cap-inc-lbl{font:700 10px 'Syne';letter-spacing:.11em;text-transform:uppercase;display:block;margin-bottom:7px}
+.cap-inc ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cap-inc li{padding-left:15px;position:relative}
+.cap-inc li::before{content:'→';position:absolute;left:0;font-size:11px;top:2px}
+.cpf{border-radius:12px;overflow:hidden;background:#111;box-shadow:0 18px 40px -14px rgba(0,0,0,.52)}
+.cpf-bar{background:#252525;padding:7px 11px;display:flex;align-items:center;gap:5px}
+.cpf-dot{width:7px;height:7px;border-radius:50%;flex:none}
+.cpf-name{font:600 9px 'Syne';letter-spacing:.1em;text-transform:uppercase;margin-left:7px}
+.cpf img{width:100%;display:block}
+
+/* precio */
+.price-box{background:var(--wh);border:1.5px solid var(--ln);border-radius:16px;padding:30px 26px;text-align:center;margin:28px 0}
+.pb-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;font-size:14px;color:var(--g)}
+.pb-meta span{background:#f5f3ef;padding:4px 10px;border-radius:99px}
+.pb-n{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(48px,11vw,72px);color:var(--ink);line-height:1;letter-spacing:-.03em;margin:8px 0 4px}
+.pb-orig{font-family:'Syne',sans-serif;font-size:18px;text-decoration:line-through;color:var(--g);display:inline;margin-right:8px}
+.pb-note{font-size:14px;color:var(--g);margin-bottom:20px}
+.pb-note strong{color:var(--ink)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.cmp-c{border-radius:12px;padding:18px}
+.cmp-c.light{background:var(--wh);border:1px solid var(--ln)}
+.cmp-c.dark{background:var(--ink)}
+.cml{font:700 10px 'Syne';letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;display:block}
+.cmp-c.light .cml{color:var(--v)}
+.cmp-c.dark .cml{color:var(--dor)}
+.cpp{font-family:'Syne',sans-serif;font-weight:700;font-size:28px;line-height:1;letter-spacing:-.02em;margin-bottom:4px}
+.cmp-c.light .cpp{color:var(--ink)}
+.cmp-c.dark .cpp{color:#fff}
+.cpd{font-size:13px;color:var(--g);margin-bottom:14px;line-height:1.5}
+.cmp-c.dark .cpd{color:rgba(255,255,255,.55)}
+@media(max-width:560px){.cmp{grid-template-columns:1fr}}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fc{background:var(--wh);border:1px solid var(--ln);border-radius:12px;padding:20px 18px}
+.fc h3{font-size:17px;margin-bottom:10px}
+.fc.si h3{color:var(--v)}
+.fc.no h3{color:var(--g)}
+.fc ul{list-style:none}
+.fc li{padding:6px 0 6px 18px;position:relative;font-size:14px;line-height:1.55}
+.fc li::before{content:'—';position:absolute;left:0;color:var(--dor)}
+@media(max-width:580px){.fit{grid-template-columns:1fr}}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 2px;font:600 16px 'Syne';cursor:pointer;list-style:none;-webkit-appearance:none;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq .fm{font:300 23px 'Syne';color:var(--v);flex:none;transition:transform .2s;line-height:1}
+.faq details[open] .fm{transform:rotate(45deg)}
+.faq .fa{padding:0 2px 16px;font-size:15px}
+
+/* close */
+.close{background:var(--ink);margin-top:72px;padding:80px 0 62px;text-align:center}
+.close .c1{font-family:'Syne',sans-serif;font-size:clamp(15px,3vw,20px);line-height:1.5;color:rgba(255,255,255,.56);max-width:460px;margin:0 auto}
+.close .c2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(24px,5.4vw,40px);color:#fff;margin:12px auto 30px;line-height:1.22;letter-spacing:-.02em;max-width:540px}
+.close .c2 em{color:var(--dor);font-style:normal}
+.close .btn{max-width:400px;margin:0 auto;background:var(--grad)}
+.legal{margin-top:36px;font-size:12px;color:rgba(255,255,255,.35)}
+.legal a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 7px}
+
+/* sticky */
+.sticky{position:fixed;bottom:0;left:0;right:0;background:var(--ink);display:none;align-items:center;gap:12px;padding:11px 16px calc(11px + env(safe-area-inset-bottom));z-index:60;transform:translateY(110%);transition:transform .28s;box-shadow:0 -8px 22px rgba(26,24,21,.34)}
+.sticky.on{transform:none}
+.sticky .sp{font:700 19px 'Syne';color:#fff;flex:none;letter-spacing:-.02em}
+.sticky a{flex:1;background:var(--grad);color:#fff;border-radius:999px;padding:13px 10px;font:700 14px 'Syne';text-align:center;text-decoration:none}
+@media(max-width:780px){.sticky{display:flex}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+body{position:relative}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.close{position:relative;overflow:hidden}
+.close::before{content:'';position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:900px;height:480px;background:radial-gradient(closest-side,rgba(214,83,109,.22),transparent 70%)}
+.close>*{position:relative}
+::selection{background:#FFA2B6;color:#1A1815}
+
+.nav{position:sticky;top:0;z-index:80;background:rgba(253,252,250,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.nav-in{max-width:1140px;margin:0 auto;padding:15px 28px;display:flex;align-items:center;gap:32px}
+.nav .logo{font:800 15px 'Syne';color:var(--ink);text-decoration:none;flex:none}
+.nav .logo em{font-style:normal;color:var(--v)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font:700 14.5px 'Karla';color:var(--ink);text-decoration:none}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{font:800 13.5px 'Karla';background:var(--grad);color:#fff;padding:11px 22px;border-radius:999px;text-decoration:none;flex:none}
+@media(max-width:800px){.nav-links{display:none}.nav-cta{margin-left:auto}}
+.foot{background:var(--ink);padding:48px 28px 36px}
+.foot-in{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}
+.foot .flogo{font:800 14px 'Syne';color:#fff}
+.foot .flogo em{font-style:normal;color:var(--blush)}
+.foot p{font-size:13.5px;color:rgba(255,255,255,.45);margin-top:12px;line-height:1.6}
+.foot h4{font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.foot ul{list-style:none;margin:0;padding:0}.foot li{margin-bottom:9px}
+.foot li a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px}
+.foot li a:hover{color:var(--blush)}
+.foot-btm{max-width:1140px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(255,255,255,.35)}
+.foot-btm a{color:rgba(255,255,255,.5);text-decoration:none;margin-left:14px}
+@media(max-width:860px){.foot-in{grid-template-columns:1fr 1fr}}
+html,body{overflow-x:clip}
+.stack-outer{overflow:hidden}
+@media(max-width:480px){.nav-in{padding:12px 16px;gap:16px}}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:8px 2px;flex:none}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:transform .2s,opacity .2s}
+.nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.open .nav-burger span:nth-child(2){opacity:0}
+.nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-menu{display:none;border-top:1px solid var(--ln);background:rgba(253,252,250,.98);padding:6px 20px 14px}
+.nav-menu a{display:block;padding:13px 2px;font:700 16px 'Karla';color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ln)}
+.nav-menu a:last-child{border-bottom:none}
+.nav.open .nav-menu{display:block}
+@media(max-width:800px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .nav-in{padding:12px 16px;gap:14px}
+  .nav-in .logo{margin-right:auto}
+  .nav-cta{margin-left:0;padding:10px 18px;font-size:13px}
+}
+@media(min-width:801px){.nav-menu{display:none!important}}
+.nav-in{width:100%;box-sizing:border-box}.nav .logo{white-space:nowrap}</style>
+<meta name="description" content="Ebook «Creador UGC de Viajes»: 168 páginas y 10 capítulos para conseguir que hoteles y marcas te paguen por tu contenido. USD 39, pago único."><link rel="canonical" href="https://ugctravelcreator.com/producto-ebook"><meta property="og:type" content="website"><meta property="og:site_name" content="UGC Travel Creator"><meta property="og:locale" content="es_AR"><meta property="og:title" content="Creador UGC de Viajes · Ebook — UGC Travel Creator"><meta property="og:description" content="Ebook «Creador UGC de Viajes»: 168 páginas y 10 capítulos para conseguir que hoteles y marcas te paguen por tu contenido. USD 39, pago único."><meta property="og:url" content="https://ugctravelcreator.com/producto-ebook"><meta property="og:image" content="https://ugctravelcreator.com/assets/img/producto-ebook-01-c0378bfa13.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Creador UGC de Viajes · Ebook — UGC Travel Creator"><meta name="twitter:description" content="Ebook «Creador UGC de Viajes»: 168 páginas y 10 capítulos para conseguir que hoteles y marcas te paguen por tu contenido. USD 39, pago único."><meta name="twitter:image" content="https://ugctravelcreator.com/assets/img/producto-ebook-01-c0378bfa13.jpg"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23E43D12%27/%3E%3Cstop offset=%271%27 stop-color=%27%23D6536D%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Arial,sans-serif%27 font-size=%2734%27 font-weight=%27800%27 fill=%27white%27 text-anchor=%27middle%27%3EU%3C/text%3E%3C/svg%3E"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Ebook Creador UGC de Viajes", "description": "El método completo para conseguir que hoteles y marcas de viaje te paguen por tu contenido. 168 páginas, 10 capítulos.", "image": "https://ugctravelcreator.com/assets/img/producto-ebook-01-c0378bfa13.jpg", "brand": {"@type": "Brand", "name": "UGC Travel Creator"}, "offers": {"@type": "Offer", "price": "39", "priceCurrency": "USD", "url": "https://ugctravelcreator.com/producto-ebook", "availability": "https://schema.org/InStock"}}</script></head>
+<body>
+<nav class="nav"><div class="nav-in">
+<a class="logo" href="/">UGC Travel <em>Creator</em></a>
+<div class="nav-links"><a href="/tienda">Tienda</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/mi-historia">Mi historia</a></div>
+<a class="nav-cta" href="/guia-gratis">Guía gratis</a>
+<button class="nav-burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button></div><div class="nav-menu"><a href="/tienda">Tienda</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/mi-historia">Mi historia</a><a href="/contacto">Contacto</a></div></nav>
+<main>
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="em-frame">
+    <span class="em-cam"></span>
+    <div class="em-scr">
+      <img src="/assets/img/home-03-ff16e1c52f.jpg" alt="Ebook Creador UGC de Viajes">
+    </div>
+  </div>
+
+  <div class="badges">
+    <span class="badge"><b>168</b> páginas</span>
+    <span class="badge"><b>10</b> capítulos</span>
+    <span class="badge"><b>+40</b> herramientas</span>
+    <span class="badge">Edición <b>2026</b></span>
+  </div>
+
+  <h1>Que los hoteles te paguen<br>por tu contenido —<br><em>y vos vivas viajando.</em></h1>
+
+  <p class="sub">No hace falta tener miles de seguidores. Hace falta el método — y está en este ebook.</p>
+
+  <p class="lede">Te alojás gratis en el hotel. Grabás el contenido mientras estás ahí. Después cobrás una tarifa por el trabajo. Así funciona el negocio real del UGC de viajes. Este ebook lo escribió alguien que recorrió más de 70 países y fue manager de un hotel de lujo, trabajando en primera persona con creadores de contenido de viajes.</p>
+
+  <div class="hero-cta">
+    <div class="hero-price">
+      <span class="hp-orig">USD 257</span>
+      <span class="hp-now">USD 39</span>
+    </div>
+    <a class="btn" href="https://pay.hotmart.com/K106884716O" id="ctaHero">Quiero el ebook — USD 39</a>
+    <p class="micro">Acceso inmediato · PDF descargable · Pago seguro con Hotmart</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ESPEJO -->
+<section>
+  <p class="beat">En Instagram ves perfiles viajando todo el tiempo. Pero lo que comparten no es casualidad: es su portfolio.</p>
+  <p class="beat">Pensás que debe haber algo distinto en ellos — equipos de grabación caros, contacto con millonarios, o mucha suerte.</p>
+  <p class="beat yes">Lo único distinto es que conocen el método.</p>
+
+  <p>Los hoteles buscan contenido para sus propias redes sociales, su página web y sus anuncios. Por eso no se fijan en la cantidad de seguidores que tenés. <strong>Importa si sabés ofrecerle al alojamiento lo que necesita, en el formato que lo necesita.</strong></p>
+  <p>Este ebook enseña ese modelo completo: cómo empezar, cómo crear tu portfolio incluso sin viajar, qué escribirle a los hoteles para que te respondan con un sí, y cómo repetir este sistema una y otra vez para ganar dinero, formar una carrera como creador de contenido UGC de viajes, y vivir viajando. El proceso real, capítulo por capítulo.</p>
+</section>
+
+<hr class="hr">
+
+<!-- AUTORIDAD -->
+<section>
+  <div class="lobby-ph">
+    <img src="/assets/img/home-10-68326df1c1.jpg" alt="Lobby de hotel de lujo">
+  </div>
+  <h2>Escrito por alguien que conoce la industria hotelera desde adentro.</h2>
+  <p>Ex manager de un hotel de lujo. Dueño de una agencia de viajes y de un servicio de concierge internacional. Más de 70 países recorridos.</p>
+  <p>Eso significa algo concreto: sé exactamente cómo piensa un hotel cuando recibe una propuesta de colaboración. Qué lo convence, qué lo asusta, qué lenguaje entiende y cómo se toman las decisiones reales — no las que se ven desde afuera.</p>
+  <p>Cada capítulo está escrito desde esa perspectiva: <strong>la de quien conoce el negocio por dentro.</strong></p>
+  <div class="cred">
+    <div class="c"><span class="cn">Hotel de lujo</span><span class="cl">Ex manager</span></div>
+    <div class="c"><span class="cn">Agencia propia</span><span class="cl">Viajes + concierge internacional</span></div>
+    <div class="c"><span class="cn">+70</span><span class="cl">Países recorridos</span></div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- RESULTADOS -->
+<section>
+  <span class="eye">Al terminar el ebook</span>
+  <h2>Cinco cosas que vas a poder hacer.<br><em>No teoría — resultados concretos.</em></h2>
+  <div class="outcomes">
+    <div class="oc"><span class="oc-n">01</span>
+      <div><h3>Entender el modelo</h3><p>Saber exactamente cómo funciona este negocio y en qué se diferencia de ser influencer.</p></div>
+    </div>
+    <div class="oc"><span class="oc-n">02</span>
+      <div><h3>Tener con qué mostrar</h3><p>Crear tu primer portfolio aunque nunca hayas trabajado con ninguna marca.</p></div>
+    </div>
+    <div class="oc"><span class="oc-n">03</span>
+      <div><h3>Saber cuánto cobrar</h3><p>Poner precios reales y saber cómo presentarlos sin incomodidad.</p></div>
+    </div>
+    <div class="oc"><span class="oc-n">04</span>
+      <div><h3>Contactar hoteles que respondan</h3><p>Escribir el mensaje correcto a la persona correcta en el momento correcto.</p></div>
+    </div>
+    <div class="oc"><span class="oc-n">05</span>
+      <div><h3>Volver a hacerlo</h3><p>No depender de la suerte para la próxima colaboración, sino de un sistema que vos controlás.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- TOOL COUNTS -->
+<section class="center">
+  <span class="eye">Lo que incluye</span>
+  <h2>No solo texto — <em>herramientas para usar.</em></h2>
+  <p style="max-width:500px;margin-inline:auto">168 páginas con plantillas listas para copiar, ejercicios para completar, rangos de precios reales 2026 y casos de ejemplo para ver cómo se aplica.</p>
+  <div class="tcounts">
+    <div class="tc"><span class="tn">+20</span><span class="tl">Plantillas y mensajes listos</span></div>
+    <div class="tc"><span class="tn">+15</span><span class="tl">Ejercicios con hoja de trabajo</span></div>
+    <div class="tc"><span class="tn">+10</span><span class="tl">Tablas y listas de referencia</span></div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ÍNDICE REAL -->
+<section>
+  <span class="eye">Estructura del ebook</span>
+  <h2>10 capítulos. <em>Un recorrido completo.</em></h2>
+  <p>El ebook está dividido en dos partes: la primera te da la base (modelo, portfolio, precios, cómo encontrar marcas). La segunda te enseña a cerrar, cobrar y sostener el flujo.</p>
+  <div class="idx-grid">
+    <div class="idx-c">
+      <span class="idx-lbl">Parte I — Fundamentos</span>
+      <img src="/assets/img/producto-ebook-01-c0378bfa13.jpg" alt="Índice parte I">
+    </div>
+    <div class="idx-c">
+      <span class="idx-lbl">Parte II — Cerrar y cobrar</span>
+      <img src="/assets/img/producto-ebook-02-0df2b24e62.jpg" alt="Índice parte II">
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div style="background:#1A1815;border-top:4px solid #EFB11D;padding:32px 24px;text-align:center">
+  <small style="font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:6px">Parte 1</small>
+  <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(20px,4vw,30px);color:#fff;margin:0;letter-spacing:-.02em">Fundamentos y preparación</h2>
+</div>
+<div class="cap-card" style="background:#1A1815">
+  <div class="cap-body ">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#EFB11D">01</div>
+      <p class="cap-tag" style="color:#EFB11D">Hay tres caminos — solo uno no necesita seguidores</p>
+      <h2 class="cap-h" style="color:#F7F4F0">El mapa del negocio</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">Hay tres formas en que un creator puede trabajar con hoteles y marcas de viaje. Solo una no requiere una audiencia grande para empezar. Este capítulo explica cuál es, por qué es la más accesible y cómo entrar por ahí.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Entendés la diferencia entre influencer, creador UGC y el modelo mixto — y cuál te conviene arrancar hoy.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Sabés exactamente qué evalúa un hotel en cada tipo de creator (spoiler: casi nunca son los seguidores).</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Elegís tu punto de partida con criterio, no por imitación de lo que ves en redes.</span></div></div>
+      <div class="cap-key" style="border-color:#EFB11D28;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#EFB11D">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">Los hoteles no te contratan por tu audiencia. Te contratan porque necesitan material para su propio Instagram, su web y sus anuncios. Eso significa que podés empezar hoy, con lo que ya tenés.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#EFB11D">Incluye</span>
+        <ul><li>Tabla comparativa de los 3 modelos con barreras y ventajas</li><li>Ficha de cada camino: qué vendés, qué mira el hotel, cuándo conviene</li><li>Ejercicio para elegir tu punto de partida</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 01 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-03-de6c6c3847.jpg" alt="Cap 01" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#E43D12">
+  <div class="cap-body cap-reverse">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#EFB11D">02</div>
+      <p class="cap-tag" style="color:#EFB11D">El lado que la mayoría nunca ve</p>
+      <h2 class="cap-h" style="color:#FFFFFF">Cómo piensa el hotel</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">Antes de escribirle a un hotel, conviene entender quién va a leer ese mensaje, qué lo convence y qué lo asusta. Con eso, cualquier propuesta se vuelve más fácil de decir que sí.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Sabés a quién le estás escribiendo realmente dentro de cada tipo de hotel — no "al hotel", sino a una persona concreta.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Entendés qué le cuesta a un hotel darte una estadía y por qué muchas veces el freno no es el dinero.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Aprendés a presentar tu propuesta como algo que les facilita el trabajo, no como un pedido de favor.</span></div></div>
+      <div class="cap-key" style="border-color:#EFB11D28;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#EFB11D">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">En un hotel boutique, el dueño decide en 5 minutos. En un resort de 200 habitaciones, tu mensaje pasa por tres personas antes de que alguien lo evalúe. Escribir lo mismo para los dos es el error más común.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#EFB11D">Incluye</span>
+        <ul><li>Diagrama del recorrido de tu mensaje desde el envío hasta la decisión</li><li>Fichas de 4 tipos de hotel: quién lee, qué le preocupa, qué lenguaje entiende</li><li>Calculadora del coste real de tu estadía para el hotel</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 02 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-04-e4202da40d.jpg" alt="Cap 02" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#FFF3F1">
+  <div class="cap-body ">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#E43D12">03</div>
+      <p class="cap-tag" style="color:#E43D12">Cuánto cobrar — y cómo no regalarte</p>
+      <h2 class="cap-h" style="color:#1A1815">Tarifas y derechos</h2>
+      <p class="cap-intro" style="color:rgba(26,24,21,.84)">¿Cuánto cobrar? Es la pregunta que más paraliza a quien empieza. Este capítulo te da los rangos reales del mercado 2026, te explica qué sube o baja tu precio y te muestra cómo estructurar una propuesta sin incomodidad.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(26,24,21,.84)">Sabés en qué rango de precios estás hoy — y qué tenés que hacer para subir al siguiente.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(26,24,21,.84)">Entendés que el uso del contenido se cobra aparte del video, y cómo hacerlo sin que se sienta raro.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(26,24,21,.84)">Armás tres niveles de propuesta (básico, estándar y premium) con precios que podés defender.</span></div></div>
+      <div class="cap-key" style="border-color:#E43D1228;background:rgba(26,24,21,.06)">
+        <span class="cap-key-lbl" style="color:#E43D12">Por qué importa</span>
+        <p style="color:rgba(26,24,21,.60)">La mayoría cobra "un video". Los creadores que más ganan cobran el video, el uso del material y los extras por separado. No es más ambición — es entender cómo funciona el precio en este mercado.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(26,24,21,.60)">
+        <span class="cap-inc-lbl" style="color:#E43D12">Incluye</span>
+        <ul><li>Rangos de tarifa reales 2026 por nivel de experiencia</li><li>Tabla de formatos y precios (video, fotos, material crudo, variaciones)</li><li>Plantilla de tres niveles de propuesta: básico, estándar y premium</li><li>Guía para calcular la tarifa según el destino y el tipo de hotel</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(26,24,21,.28)">Capítulo 03 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-05-f5ef1c0cb9.jpg" alt="Cap 03" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#D6536D">
+  <div class="cap-body cap-reverse">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#EFB11D">04</div>
+      <p class="cap-tag" style="color:#EFB11D">La experiencia se puede crear — en un fin de semana</p>
+      <h2 class="cap-h" style="color:#FFFFFF">Portfolio profesional</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">"No tengo trabajos para mostrar." Ese es el argumento más común para no empezar. Y es falso. La experiencia en este rubro se puede fabricar en 48 horas, de forma honesta y sin engañar a nadie.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Entendés qué muestra un portfolio y en qué se diferencia de un perfil de influencer.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Sabés cómo crear tus primeras 6 a 10 piezas sin haber trabajado con ninguna marca antes.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Armás un portfolio que un hotel puede evaluar en 20 segundos desde su celular.</span></div></div>
+      <div class="cap-key" style="border-color:#EFB11D28;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#EFB11D">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">Noor reservó una noche en un hotel de su ciudad por 60 euros, pidió permiso para filmar y produjo 3 videos y 12 fotos en 14 horas. A la semana, tenía su primera marca pagada. La experiencia no se espera — se crea.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#EFB11D">Incluye</span>
+        <ul><li>Comparativa entre portfolio y perfil de influencer (cuándo sirve cada uno)</li><li>Plan de fin de semana para crear tu base desde cero</li><li>Guía de etiquetado honesto del trabajo de práctica</li><li>Estructura del portfolio que funciona desde el celular</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 04 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-06-cb8e90711e.jpg" alt="Cap 04" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#1A1815">
+  <div class="cap-body ">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#E43D12">05</div>
+      <p class="cap-tag" style="color:#E43D12">Cuatro canales — un sistema que no depende de la suerte</p>
+      <h2 class="cap-h" style="color:#FFF3F1">Dónde encontrar marcas</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">El error de esperar a que una marca te encuentre. Hay cuatro formas de conseguir colaboraciones con hoteles y marcas de viaje — este capítulo las explica todas, con sus ventajas y sus tiempos reales.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(255,255,255,.88)">Conocés los cuatro canales para conseguir marcas y cuándo priorizar cada uno.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(255,255,255,.88)">Aprendés a detectar en 5 minutos si un hotel tiene posibilidades de colaborar antes de escribirle.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(255,255,255,.88)">Salís del capítulo con una lista de 30 marcas candidatas y el primer mensaje listo.</span></div></div>
+      <div class="cap-key" style="border-color:#E43D1228;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#E43D12">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">El trabajo más difícil no es escribir el mensaje — es encontrar a la persona correcta dentro de cada hotel. Saber eso ahorra semanas de mensajes que no llegan a quien decide.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#E43D12">Incluye</span>
+        <ul><li>Mapa de los 4 canales con ventajas y velocidad de cada uno</li><li>Ficha de cada canal con cuándo priorizarlo</li><li>5 señales que dicen si un hotel está abierto a colaboraciones</li><li>Plantilla de lista de 30 marcas candidatas</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 05 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-07-aafd6cfb51.jpg" alt="Cap 05" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div style="background:linear-gradient(120deg,#E43D12,#D6536D);padding:32px 24px;text-align:center">
+  <small style="font:700 11px 'Syne';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-bottom:6px">Parte 2</small>
+  <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(20px,4vw,30px);color:#fff;margin:0;letter-spacing:-.02em">Cerrar, cobrar y repetir</h2>
+</div>
+<div class="cap-card" style="background:#E43D12">
+  <div class="cap-body ">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#EFB11D">06</div>
+      <p class="cap-tag" style="color:#EFB11D">El mensaje que sobrevive a una bandeja llena</p>
+      <h2 class="cap-h" style="color:#FFFFFF">El pitch</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">El mensaje que enviás al hotel define si hay respuesta o no. No es cuestión de suerte — hay una estructura que funciona, corta y fácil de leer desde el celular. Este capítulo te la enseña.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Escribís mensajes que los hoteles leen y responden — con la estructura exacta, sin improvisar.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Tenés plantillas completas en español y en inglés para distintos tipos de colaboración.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Sabés cómo hacer seguimiento sin ser molesto y sin rendirte demasiado pronto.</span></div></div>
+      <div class="cap-key" style="border-color:#EFB11D28;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#EFB11D">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">Un hotel recibe decenas de propuestas por semana. La tuya tiene que sobrevivir los primeros 10 segundos de atención. El orden de los párrafos importa tanto como lo que dicen.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#EFB11D">Incluye</span>
+        <ul><li>Estructura del mensaje perfecto (5 bloques con instrucciones)</li><li>Banco de 12 títulos de email probados</li><li>Plantillas en español e inglés por tipo de colaboración</li><li>Secuencia de seguimiento de 3 pasos</li><li>Los errores que descartan una propuesta antes de que termine de leerse</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 06 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-08-a772199133.jpg" alt="Cap 06" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#EFB11D">
+  <div class="cap-body cap-reverse">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#E43D12">07</div>
+      <p class="cap-tag" style="color:#E43D12">Cómo pasar de "te doy noches" a "te transfiero el dinero"</p>
+      <h2 class="cap-h" style="color:#1A1815">Del canje al pago</h2>
+      <p class="cap-intro" style="color:rgba(26,24,21,.84)">Muchas colaboraciones empiezan con alojamiento gratuito a cambio de contenido. Eso está bien para empezar. El objetivo es cobrar dinero — y este capítulo te muestra cómo hacer esa transición.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(26,24,21,.84)">Sabés la diferencia entre un canje con valor real y uno que solo te quita tiempo.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(26,24,21,.84)">Aprendés a documentar los resultados de cada colaboración — el paso que casi nadie hace y que más rápido te sube de categoría.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#E43D12">✓</span><span style="color:rgba(26,24,21,.84)">Entendés cómo pasar de alojamiento gratis a cobrar dinero, y de ahí a que te paguen mes a mes.</span></div></div>
+      <div class="cap-key" style="border-color:#E43D1228;background:rgba(26,24,21,.06)">
+        <span class="cap-key-lbl" style="color:#E43D12">Por qué importa</span>
+        <p style="color:rgba(26,24,21,.60)">El hotel que te dio alojamiento esta vez puede ser el que te transfiera dinero la próxima. Solo si le mostraste lo que funcionó y se lo hiciste fácil de defender ante su jefe.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(26,24,21,.60)">
+        <span class="cap-inc-lbl" style="color:#E43D12">Incluye</span>
+        <ul><li>Tabla: canje con valor vs. tiempo regalado</li><li>Lista de lo que tiene que quedar por escrito en todo acuerdo</li><li>Plantilla de reporte de resultados a 30 días</li><li>Mapa de los 4 pasos del canje al pago recurrente</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(26,24,21,.28)">Capítulo 07 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-09-d965fcb287.jpg" alt="Cap 07" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#FFF3F1">
+  <div class="cap-body ">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#1A1815">08</div>
+      <p class="cap-tag" style="color:#1A1815">Lo que tiene que quedar por escrito — sin complicaciones</p>
+      <h2 class="cap-h" style="color:#1A1815">Contratos, facturas y seguridad</h2>
+      <p class="cap-intro" style="color:rgba(26,24,21,.84)">Cuando empezás a cobrar, necesitás saber cómo hacerlo bien: qué poner por escrito, cómo facturar y qué mirar antes de aceptar una colaboración. Sin abogados para cada trabajo.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#1A1815">✓</span><span style="color:rgba(26,24,21,.84)">Sabés qué poner en un acuerdo simple que te protege sin necesitar un contrato formal de 20 páginas.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#1A1815">✓</span><span style="color:rgba(26,24,21,.84)">Facturás como profesional desde el primer trabajo en Argentina, México, España o Colombia.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#1A1815">✓</span><span style="color:rgba(26,24,21,.84)">Reconocés las señales de alerta antes de aceptar una colaboración que podría traer problemas.</span></div></div>
+      <div class="cap-key" style="border-color:#1A181528;background:rgba(26,24,21,.06)">
+        <span class="cap-key-lbl" style="color:#1A1815">Por qué importa</span>
+        <p style="color:rgba(26,24,21,.60)">Dejar por escrito quién puede usar el contenido, durante cuánto tiempo y en qué canales toma dos minutos — y evita el problema más común: el material que aparece en anuncios sin que nadie te avisó ni te pagó.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(26,24,21,.60)">
+        <span class="cap-inc-lbl" style="color:#1A1815">Incluye</span>
+        <ul><li>Los 12 bloques del acuerdo básico que sí te protege</li><li>Extracto de contrato listo para adaptar</li><li>Guía de facturación para Argentina, México, España y Colombia</li><li>Lista de señales de alerta antes de aceptar</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(26,24,21,.28)">Capítulo 08 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-10-3aae6f0c2e.jpg" alt="Cap 08" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#D6536D">
+  <div class="cap-body cap-reverse">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#EFB11D">09</div>
+      <p class="cap-tag" style="color:#EFB11D">De colaboración suelta a negocio que no para</p>
+      <h2 class="cap-h" style="color:#FFFFFF">La operación</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">Una colaboración conseguida es un buen día. Un flujo constante de colaboraciones es un negocio. Este capítulo te muestra cómo organizarte para que la siguiente no dependa de que te llegue la inspiración.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Tenés un sistema sencillo para llevar el seguimiento de todas tus oportunidades sin que se caiga ninguna.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Establecés una rutina semanal que mantiene el flujo de marcas, incluso las semanas en que no tenés ganas.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Convertís cada cliente conseguido en el punto de partida del siguiente.</span></div></div>
+      <div class="cap-key" style="border-color:#EFB11D28;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#EFB11D">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">Los creadores que viven de esto no tienen más suerte que los demás. Tienen un sistema que sigue funcionando incluso cuando ellos no están en su mejor momento. Eso también se aprende.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#EFB11D">Incluye</span>
+        <ul><li>Sistema de seguimiento de oportunidades con 8 estados exactos</li><li>Tabla lista para duplicar en cualquier hoja de cálculo</li><li>Rutina semanal: qué hacer lunes, miércoles y viernes</li><li>Reglas para saber cuándo insistir y cuándo pasar al siguiente</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 09 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-11-13430e731b.jpg" alt="Cap 09" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cap-card" style="background:#1A1815">
+  <div class="cap-body ">
+    <div class="cap-l">
+      <div class="cap-num" style="color:#EFB11D">10</div>
+      <p class="cap-tag" style="color:#EFB11D">El primer mes, día por día</p>
+      <h2 class="cap-h" style="color:#F7F4F0">Plan de 30 días</h2>
+      <p class="cap-intro" style="color:rgba(255,255,255,.88)">Al terminar el libro, muchas personas saben qué hacer pero no por dónde empezar. Este capítulo resuelve eso: es un plan concreto, con una acción por día, para poner todo en marcha en 30 días.</p>
+      <div class="cap-los"><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Seguís un calendario con una acción por día, sin tener que decidir qué hacer ni en qué orden.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Al final del mes tenés portfolio publicado, precios definidos y los primeros mensajes enviados.</span></div><div class="cap-lo"><span class="lo-chk" style="color:#EFB11D">✓</span><span style="color:rgba(255,255,255,.88)">Medís si vas por buen camino con 5 números simples.</span></div></div>
+      <div class="cap-key" style="border-color:#EFB11D28;background:rgba(255,255,255,.08)">
+        <span class="cap-key-lbl" style="color:#EFB11D">Por qué importa</span>
+        <p style="color:rgba(255,255,255,.62)">La diferencia entre quien empieza y quien no empieza casi nunca es el talento. Es saber exactamente qué hacer el primer lunes — y tener algo que lo diga.</p>
+      </div>
+      <div class="cap-inc" style="color:rgba(255,255,255,.62)">
+        <span class="cap-inc-lbl" style="color:#EFB11D">Incluye</span>
+        <ul><li>Calendario de 30 días, día por día, con entregable semanal</li><li>Hoja de trabajo imprimible para las 4 semanas</li><li>Tablero de medición del día 30 (5 indicadores)</li><li>Checklist de cierre del primer mes</li></ul>
+      </div>
+    </div>
+    <div class="cap-r">
+      <div class="cpf">
+        <div class="cpf-bar">
+          <span class="cpf-dot" style="background:#ff5f57"></span>
+          <span class="cpf-dot" style="background:#ffbd2e"></span>
+          <span class="cpf-dot" style="background:#28c840"></span>
+          <span class="cpf-name" style="color:rgba(255,255,255,.35)">Capítulo 10 · página real del ebook</span>
+        </div>
+        <img src="/assets/img/producto-ebook-12-1ed1cad8bb.jpg" alt="Cap 10" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<hr class="hr">
+
+<section class="center">
+  <span class="eye">Inversión</span>
+  <h2>168 páginas del método real.<br><em>USD 39.</em></h2>
+  <div class="price-box">
+    <div class="pb-meta">
+      <span>168 páginas</span><span>10 capítulos</span>
+      <span>+40 herramientas</span><span>Edición 2026</span>
+    </div>
+    <p class="pb-orig">USD 257</p>
+    <p class="pb-n">USD 39</p>
+    <p class="pb-note">Menos de lo que cobrarías por <strong>una sola colaboración con un hotel independiente</strong>.</p>
+    <a class="btn" href="https://pay.hotmart.com/K106884716O">Quiero el ebook — USD 39</a>
+    <p style="margin-top:10px;font-size:13px;color:var(--g)">Acceso inmediato · PDF · Garantía Hotmart</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<section>
+  <span class="eye">¿Ebook o Bundle?</span>
+  <h2>El ebook es la base.<br><em>El bundle agrega la ejecución.</em></h2>
+  <p>El ebook tiene los 10 capítulos del método — todo lo que necesitás para entender el negocio y arrancar. Si eso es suficiente para empezar, es suficiente para comprar.</p>
+  <p>El <strong>Bundle Creador (USD 69)</strong> agrega 8 playbooks de ejecución: plantillas, scripts y sistemas listos para usar, uno por cada etapa del proceso. Es la opción para quien quiere ir más rápido.</p>
+  <div class="cmp">
+    <div class="cmp-c light">
+      <span class="cml">Ebook</span>
+      <p class="cpp">USD 39</p>
+      <p class="cpd">El método completo.<br>168 páginas, 10 capítulos.</p>
+      <a class="btn" href="https://pay.hotmart.com/K106884716O">Empezar con el ebook</a>
+    </div>
+    <div class="cmp-c dark">
+      <span class="cml">Bundle Creador</span>
+      <p class="cpp">USD 69</p>
+      <p class="cpd">Método + 8 playbooks.<br>+56 páginas de ejecución.</p>
+      <a class="btn dk" href="/producto-bundle">Ver el bundle</a>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<section>
+  <div class="fit">
+    <div class="fc si">
+      <h3>Es para vos si</h3>
+      <ul>
+        <li>Querés saber cómo funciona este negocio de verdad.</li>
+        <li>Pensás en viajar más y necesitás una forma de que eso se pague.</li>
+        <li>Ya investigaste sobre UGC y querés el método, no solo la idea.</li>
+        <li>Preferís aprender bien antes de improvisar.</li>
+      </ul>
+    </div>
+    <div class="fc no">
+      <h3>No es para vos si</h3>
+      <ul>
+        <li>Buscás ingresos garantizados. Ningún ebook los tiene — este tampoco. Lo que tiene es el método.</li>
+        <li>Ya operás a nivel profesional y solo necesitás herramientas puntuales → mirá el bundle.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<section class="faq">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Qué es exactamente el UGC? <span class="fm">+</span></summary>
+  <p class="fa">UGC (User Generated Content) es contenido creado por personas externas que las marcas usan en sus propios canales — su Instagram, su web, sus anuncios. En turismo, son videos y fotos que vos producís y el hotel publica. Por eso no necesitás seguidores: lo que importa es la calidad del material, no quién lo publica.</p></details>
+  <details><summary>¿Necesito seguidores para que esto funcione? <span class="fm">+</span></summary>
+  <p class="fa">No. El primer capítulo explica exactamente por qué. El modelo UGC es distinto al de influencer: los hoteles no te contratan por tu audiencia, sino por el contenido que producís para sus propios canales.</p></details>
+  <details><summary>¿Necesito experiencia previa o trabajos anteriores? <span class="fm">+</span></summary>
+  <p class="fa">No. El capítulo 4 explica exactamente cómo crear tu primer portfolio desde cero, sin haber trabajado con ninguna marca antes. Hay un plan concreto de fin de semana para hacerlo.</p></details>
+  <details><summary>¿Funciona si estoy en Argentina, México, España o Colombia? <span class="fm">+</span></summary>
+  <p class="fa">Sí. El capítulo 8 incluye guía de facturación para los cuatro países, y el método aplica para colaboraciones locales e internacionales.</p></details>
+  <details><summary>¿Cuánto tiempo lleva ver resultados? <span class="fm">+</span></summary>
+  <p class="fa">El capítulo 10 tiene un plan de 30 días, día por día. Al terminar ese mes deberías tener portfolio publicado, precios definidos y los primeros mensajes enviados. Los resultados dependen de tu ejecución — el ebook te da el mapa.</p></details>
+  <details><summary>¿Cuánto se puede llegar a cobrar? <span class="fm">+</span></summary>
+  <p class="fa">Los rangos reales del mercado 2026 están en el capítulo 3: entre USD 50 y USD 500 por video según experiencia y nicho. No prometemos cifras específicas — el ebook te enseña la lógica para que calcules la tuya.</p></details>
+  <details><summary>¿En qué se diferencia del bundle? <span class="fm">+</span></summary>
+  <p class="fa">El ebook (USD 39) tiene los 10 capítulos del método. El Bundle Creador (USD 69) agrega 8 playbooks de ejecución con plantillas y scripts listos para usar, uno por etapa. Si todavía no tenés el ebook, el bundle es la forma más eficiente de tener todo.</p></details>
+  <details><summary>¿Cómo recibo el material? <span class="fm">+</span></summary>
+  <p class="fa">Por Hotmart, con descarga inmediata después del pago. El ebook llega en PDF, optimizado para pantalla y para imprimir.</p></details>
+  <details><summary>¿Hay garantía? <span class="fm">+</span></summary>
+  <p class="fa">Sí: la garantía de reembolso de Hotmart vigente al momento de la compra.</p></details>
+</section>
+
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <p class="c1">Hay personas que hoy están viajando y que los hoteles les pagan por eso. Saben algo que la mayoría no sabe.</p>
+    <p class="c2">Este libro te explica<br><em>exactamente qué es.</em></p>
+    <a class="btn" href="https://pay.hotmart.com/K106884716O">Quiero el ebook — USD 39</a>
+    <p class="legal"><a href="/privacidad">Privacidad</a>·<a href="/terminos">Términos</a>·<a href="/reembolsos">Reembolsos</a>·<a href="/cookies">Cookies</a></p>
+  </div>
+</section>
+</main>
+<footer class="foot">
+<div class="foot-in">
+<div><span class="flogo">UGC Travel <em>Creator</em></span><p>El método para trabajar con hoteles y marcas de viaje, escrito desde adentro de la hotelería de lujo.</p></div>
+<div><h4>Explorá</h4><ul><li><a href="/tienda">Tienda</a></li><li><a href="/producto-ebook">Ebook</a></li><li><a href="/producto-bundle">Bundle Creador</a></li><li><a href="/guia-gratis">Guía gratis</a></li></ul></div>
+<div><h4>Aprendé</h4><ul><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li><li><a href="/mi-historia">Mi historia</a></li><li><a href="/contacto">Contacto</a></li></ul></div>
+<div><h4>Seguinos</h4><ul><li><a href="https://www.instagram.com/travelcreatorugc/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@travelcreatorugc" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.threads.net/@travelcreatorugc" target="_blank" rel="noopener">Threads</a></li></ul></div>
+</div>
+<div class="foot-btm"><span>© 2026 UGC Travel Creator</span>
+<span><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a><a href="/reembolsos">Reembolsos</a><a href="/cookies">Cookies</a></span></div>
+</footer>
+
+<div class="sticky" id="s">
+  <span class="sp">USD 39</span>
+  <a href="https://pay.hotmart.com/K106884716O">Quiero el ebook</a>
+</div>
+<script>
+(function(){
+  var c=document.getElementById('ctaHero'),s=document.getElementById('s');
+  if(!c||!s||!('IntersectionObserver' in window)){s&&s.classList.add('on');return}
+  new IntersectionObserver(function(e){
+    s.classList.toggle('on',!e[0].isIntersecting&&e[0].boundingClientRect.top<0);
+  },{threshold:0}).observe(c);
+})();
+</script>
+
+<script>
+(function(){
+  var mob=screen.width<=600||/Android|iPhone|iPad|iPod|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+  if(mob)return; /* en mobile: navegación normal al checkout de Hotmart */
+  document.querySelectorAll('a[href^="https://pay.hotmart.com/"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var ov=document.createElement('div');
+      ov.style.cssText='position:fixed;inset:0;background:rgba(26,24,21,.72);z-index:9998;display:flex;align-items:center;justify-content:center;padding:24px';
+      var box=document.createElement('div');
+      box.style.cssText='position:relative;width:min(640px,96vw);height:min(780px,92vh);background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.5)';
+      var x=document.createElement('button');x.innerHTML='&times;';x.setAttribute('aria-label','Cerrar');
+      x.style.cssText='position:absolute;top:6px;right:10px;z-index:2;background:none;border:none;font-size:30px;line-height:1;color:#6E6860;cursor:pointer';
+      var fr=document.createElement('iframe');
+      fr.src=a.href+(a.href.indexOf('?')>0?'&':'?')+'checkoutMode=2';
+      fr.allow='payment';fr.setAttribute('allowpaymentrequest','true');
+      fr.style.cssText='width:100%;height:100%;border:none';
+      function close(){if(ov.parentNode)document.body.removeChild(ov);document.documentElement.style.overflow=''}
+      x.onclick=close;
+      ov.addEventListener('click',function(ev){if(ev.target===ov)close()});
+      document.addEventListener('keydown',function esc(ev){if(ev.key==='Escape'){close();document.removeEventListener('keydown',esc)}});
+      box.appendChild(x);box.appendChild(fr);ov.appendChild(box);document.body.appendChild(ov);
+      document.documentElement.style.overflow='hidden';
+    });
+  });
+})();
+</script><script>document.querySelectorAll(".nav-burger").forEach(function(b){b.addEventListener("click",function(){var n=b.closest(".nav");var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)})});</script></body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600">
+  <defs><clipPath id="a"><path d="M0 240 A240 240 0 0 1 480 240 V576 a24 24 0 0 1 -24 24 H24 a24 24 0 0 1 -24 -24 Z"/></clipPath></defs>
+  <g clip-path="url(#a)">
+    <rect width="480" height="600" fill="#8B9A7D"/>
+    <circle cx="240" cy="220" r="130" fill="#F7F3EC" opacity="0.35"/>
+    <circle cx="240" cy="205" r="60" fill="#F7F3EC"/>
+    <path d="M240 265 q-95 0 -120 110 v225 h240 v-225 q-25 -110 -120 -110 Z" fill="#F7F3EC"/>
+    <text x="240" y="560" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2" fill="#3A312A" opacity="0.55">TU FOTO AQUÍ</text>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+# Netlify headers — ugctravelcreator.com
+
+# La carpeta de descargas no debe aparecer en buscadores
+/descargas/*
+  X-Robots-Tag: noindex, nofollow
+
+/confirmado.html
+  X-Robots-Tag: noindex, nofollow
+
+/gracias.html
+  X-Robots-Tag: noindex, nofollow
+
+# Cache larga para assets estáticos
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
