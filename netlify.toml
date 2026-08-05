@@ -8,6 +8,12 @@
   to = "/.netlify/functions/subscribe"
   status = 200
 
+# --- Webhook de Hotmart (compras -> listas de Brevo) ---
+[[redirects]]
+  from = "/api/hotmart"
+  to = "/.netlify/functions/hotmart"
+  status = 200
+
 # --- Nombre canónico del lead magnet ---
 [[redirects]]
   from = "/recurso-gratuito"
