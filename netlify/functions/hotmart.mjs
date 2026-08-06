@@ -31,10 +31,10 @@ const TEST_NOMBRE = /produto\s*test\s*postback/i;
 const ID_LISTA_EBOOK = Number(process.env.LIST_EBOOK || 8);
 const ID_LISTA_BUNDLE = Number(process.env.LIST_BUNDLE || 9);
 
-// Eventos que dan de ALTA y eventos que dan de BAJA
-const ALTA = ["PURCHASE_APPROVED", "PURCHASE_COMPLETE"];
-const BAJA = ["PURCHASE_REFUNDED", "PURCHASE_CHARGEBACK", "PURCHASE_CANCELED",
-              "PURCHASE_PROTEST", "PURCHASE_EXPIRED"];
+// Eventos: se reconocen por patrón, no por nombre exacto, para no depender
+// de la ortografía exacta que use Hotmart en cada versión de su webhook.
+const ALTA_RE = /APPROVED|COMPLETE|APROBAD|COMPLETA/i;
+const BAJA_RE = /REFUND|CHARGEBACK|CANCEL|PROTEST|EXPIRED|DISPUTE|REEMBOLS|CANCELAD/i;
 
 export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -69,7 +69,7 @@ export const handler = async (event) => {
 
   if (!email) {
     console.warn("hotmart: evento sin email de comprador", evento);
-    return { statusCode: 200, body: "sin email, ignorado" };
+    return { statusCode: 422, body: `evento sin email de comprador (${evento})` };
   }
 
   // 3 · Identificar el producto probando todos los campos posibles
@@ -98,7 +98,10 @@ export const handler = async (event) => {
 
   if (!esEbook && !esBundle) {
     console.warn("hotmart: producto no reconocido", candidatos, nombreProd, evento);
-    return { statusCode: 200, body: "producto no mapeado" };
+    return {
+      statusCode: 422,
+      body: `producto no mapeado: "${nombreProd}" ids=${candidatos.join(",")}`,
+    };
   }
 
   const listId = esBundle ? ID_LISTA_BUNDLE : ID_LISTA_EBOOK;
@@ -111,7 +114,7 @@ export const handler = async (event) => {
 
   try {
     // 4a · ALTA — crea el contacto si no existe y lo mete en la lista
-    if (ALTA.includes(evento)) {
+    if (ALTA_RE.test(evento)) {
       const r = await fetch(`${BREVO}/contacts`, {
         method: "POST",
         headers,
@@ -132,22 +135,26 @@ export const handler = async (event) => {
     }
 
     // 4b · BAJA — reembolso o cancelación: sale de la lista de compradores
-    if (BAJA.includes(evento)) {
+    if (BAJA_RE.test(evento)) {
       const r = await fetch(`${BREVO}/contacts/lists/${listId}/contacts/remove`, {
         method: "POST",
         headers,
         body: JSON.stringify({ emails: [email] }),
       });
-      if (!r.ok) {
+      // 404 = el contacto ya no estaba en la lista: para nosotros es éxito
+      if (!r.ok && r.status !== 404) {
         const t = await r.text();
         console.error("brevo baja falló", r.status, t);
+        return { statusCode: 502, body: `brevo baja error ${r.status}: ${t}` };
       }
       console.log(`hotmart: ${email} removido de lista ${listId} (${evento})`);
       return { statusCode: 200, body: "ok baja" };
     }
 
-    console.log("hotmart: evento ignorado", evento);
-    return { statusCode: 200, body: "evento ignorado" };
+    // Evento que no da alta ni baja: devolvemos 422 a propósito, así el estatus
+    // en Hotmart nos dice qué pasó en vez de mostrar un 200 engañoso.
+    console.log("hotmart: evento no clasificado", evento);
+    return { statusCode: 422, body: `evento no clasificado: ${evento}` };
   } catch (err) {
     console.error("hotmart: error inesperado", err);
     return { statusCode: 500, body: "error" };
