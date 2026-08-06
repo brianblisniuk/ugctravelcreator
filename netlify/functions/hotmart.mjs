@@ -22,11 +22,6 @@ const BUNDLE_IDS = ["K106920373F"];  // Bundle Creador · USD 69
 const BUNDLE_NOMBRE = /bundle/i;
 const EBOOK_NOMBRE = /creador\s*ugc|guia|guía/i;
 
-// TEMPORAL · solo para validar el circuito con los eventos de prueba de Hotmart.
-// El producto ficticio "Produto test postback2" se trata como si fuera el ebook.
-// BORRAR ESTA LÍNEA una vez verificado que entra y sale de la lista 8.
-const TEST_NOMBRE = /produto\s*test\s*postback/i;
-
 // Listas de Brevo (se pueden pisar con variables de entorno si algún día cambian)
 const ID_LISTA_EBOOK = Number(process.env.LIST_EBOOK || 8);
 const ID_LISTA_BUNDLE = Number(process.env.LIST_BUNDLE || 9);
@@ -96,7 +91,6 @@ export const handler = async (event) => {
   if (!esBundle && !esEbook) {
     if (BUNDLE_NOMBRE.test(nombreProd)) esBundle = true;
     else if (EBOOK_NOMBRE.test(nombreProd)) esEbook = true;
-    else if (TEST_NOMBRE.test(nombreProd)) esEbook = true; // TEMPORAL, ver arriba
   }
 
   if (!esEbook && !esBundle) {
