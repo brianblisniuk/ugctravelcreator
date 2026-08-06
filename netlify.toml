@@ -24,7 +24,12 @@
 # --- Acceso directo al PDF (enlaces viejos a la carpeta) ---
 [[redirects]]
   from = "/descargas/guia-ugc-7k2m9x/"
-  to = "/descargas/guia-ugc-7k2m9x/tu-primera-colaboracion-ugc-travel.pdf"
+  to = "/descargas/guia-ugc-7k2m9x/tu-primera-colaboracion-con-un-hotel.pdf"
+  status = 301
+
+[[redirects]]
+  from = "/descargas/guia-ugc-7k2m9x/tu-primera-colaboracion-ugc-travel.pdf"
+  to = "/descargas/guia-ugc-7k2m9x/tu-primera-colaboracion-con-un-hotel.pdf"
   status = 301
 
 # --- Artículos viejos hacia sus reemplazos del clúster ---
