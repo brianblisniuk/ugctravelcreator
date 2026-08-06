@@ -62,8 +62,11 @@ export const handler = async (event) => {
   const data = payload.data || payload;
   const evento = payload.event || payload.status || "";
 
-  const email =
+  // Brevo guarda los emails en minúscula: normalizamos para que el alta y la
+  // baja apunten siempre al mismo contacto.
+  const emailCrudo =
     data?.buyer?.email || data?.buyer_email || data?.subscriber?.email || null;
+  const email = emailCrudo ? String(emailCrudo).trim().toLowerCase() : null;
   const nombre =
     data?.buyer?.name || data?.buyer?.first_name || data?.buyer_name || "";
 
@@ -141,11 +144,18 @@ export const handler = async (event) => {
         headers,
         body: JSON.stringify({ emails: [email] }),
       });
-      // 404 = el contacto ya no estaba en la lista: para nosotros es éxito
-      if (!r.ok && r.status !== 404) {
+      // Si el contacto ya no estaba en la lista, para nosotros es éxito:
+      // el objetivo (que no esté) ya se cumplió.
+      if (!r.ok) {
         const t = await r.text();
-        console.error("brevo baja falló", r.status, t);
-        return { statusCode: 502, body: `brevo baja error ${r.status}: ${t}` };
+        const yaNoEstaba =
+          r.status === 404 ||
+          /not exist|already removed|does not exist|no existe/i.test(t);
+        if (!yaNoEstaba) {
+          console.error("brevo baja falló", r.status, t);
+          return { statusCode: 502, body: `brevo baja error ${r.status}: ${t}` };
+        }
+        console.log("brevo: el contacto ya no estaba en la lista", email);
       }
       console.log(`hotmart: ${email} removido de lista ${listId} (${evento})`);
       return { statusCode: 200, body: "ok baja" };
