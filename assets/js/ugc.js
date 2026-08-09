@@ -108,13 +108,41 @@ var UGC_CONFIG = {
     } catch (e) { return Promise.resolve(); }
   }
 
-  function submitToSubscribeFn(email) {
+  /* ---------- protección antibots (invisible para personas) ----------
+     1. Campo trampa: lo inyectamos por JS, queda fuera de pantalla, sin
+        foco por teclado y con autocompletado desactivado. Una persona no
+        lo ve ni lo puede tabular; los bots que rellenan todos los campos
+        lo completan y quedan marcados.
+     2. Marca de tiempo: medimos cuánto tardó desde que cargó la página
+        hasta el envío. Escribir un email lleva segundos; un bot tarda
+        milisegundos. */
+  var UGC_T0 = Date.now();
+
+  document.querySelectorAll("form.ugc-subscribe").forEach(function (form) {
+    if (form.querySelector('input[name="ugc_hp"]')) return;
+    var hp = document.createElement("input");
+    hp.type = "text";
+    hp.name = "ugc_hp";
+    hp.tabIndex = -1;
+    hp.autocomplete = "off";
+    hp.setAttribute("aria-hidden", "true");
+    hp.style.cssText = "position:absolute!important;left:-9999px!important;" +
+      "width:1px;height:1px;opacity:0;pointer-events:none;";
+    form.appendChild(hp);
+  });
+
+  function submitToSubscribeFn(email, form) {
     if (!UGC_CONFIG.SUBSCRIBE_ENDPOINT) return Promise.resolve();
+    var hp = form && form.querySelector('input[name="ugc_hp"]');
     try {
       return fetch(UGC_CONFIG.SUBSCRIBE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email })
+        body: JSON.stringify({
+          email: email,
+          ugc_hp: hp ? hp.value : "",
+          t: Date.now() - UGC_T0
+        })
       }).catch(function () {});
     } catch (e) { return Promise.resolve(); }
   }
@@ -141,7 +169,7 @@ var UGC_CONFIG = {
       var btn = form.querySelector("button");
       if (btn) { btn.disabled = true; btn.style.opacity = "0.6"; }
 
-      Promise.all([submitToNetlifyForms(email.value), submitToSubscribeFn(email.value), submitToESP(email.value)])
+      Promise.all([submitToNetlifyForms(email.value), submitToSubscribeFn(email.value, form), submitToESP(email.value)])
         .then(function () { window.location.href = "gracias.html"; })
         .catch(function () { window.location.href = "gracias.html"; });
     });
