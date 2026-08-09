@@ -14,10 +14,27 @@ export default async (req) => {
     return Response.json({ ok: false, error: "not_configured", missing }, { status: 503 });
   }
   let email = "";
+  let trampa = "";
+  let transcurrido = null;
   try {
     const body = await req.json();
     email = String(body.email || "").trim().toLowerCase();
+    trampa = String(body.ugc_hp || "").trim();
+    transcurrido = typeof body.t === "number" ? body.t : null;
   } catch { /* body inválido */ }
+
+  // Antibots. Respondemos ok:true a propósito: si el bot recibe un error,
+  // reintenta con otra variante. Creyendo que funcionó, se va.
+  if (trampa !== "") {
+    console.warn("subscribe: campo trampa completado, descartado", email);
+    return Response.json({ ok: true });
+  }
+  // Solo se evalúa si el navegador mandó la marca de tiempo. Si falta
+  // (por ejemplo, alguien con el JS viejo en caché) se deja pasar.
+  if (transcurrido !== null && transcurrido < 1500) {
+    console.warn("subscribe: envío demasiado rápido, descartado", email, transcurrido);
+    return Response.json({ ok: true });
+  }
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return Response.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
