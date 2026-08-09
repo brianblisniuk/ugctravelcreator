@@ -8,6 +8,12 @@
   to = "/.netlify/functions/subscribe"
   status = 200
 
+# --- Webhook de eventos transaccionales de Brevo ---
+[[redirects]]
+  from = "/api/brevo-events"
+  to = "/.netlify/functions/brevo-events"
+  status = 200
+
 # --- Webhook de Hotmart (compras -> listas de Brevo) ---
 [[redirects]]
   from = "/api/hotmart"
